@@ -12,6 +12,7 @@ const NavStyle = styled.nav`
 		li {
 			display: inline-block;
 			padding: 0rem 0.5rem;
+			font-weight: 600;
 			a {
 				line-height: 10vh;
 			}
@@ -30,10 +31,14 @@ const NavStyle = styled.nav`
 	}
 `
 
+const Logo = styled.h3`
+	cursor: pointer;
+`
+
 function Nav() {
   return (
     <NavStyle>
-    	<h3>Eartrainer</h3>
+    	<Logo>Eartrainer</Logo>
 	     <div>
 	     	<ul>
 	     		<li><Link to="/">Главная</Link></li>

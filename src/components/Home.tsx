@@ -1,8 +1,13 @@
 import Test from './Test';
 import styled from 'styled-components';
-import img1 from "../img/test-1.jpg";
-import img4 from "../img/test-4.jpg";
 import img6 from "../img/test-6.jpg";
+import {useEffect} from 'react';
+import {allTestsAction} from '../actions/testsInfoAction';
+import {useDispatch} from 'react-redux';
+import {AppStateType} from '../reducers/index';
+import {ThunkDispatch} from 'redux-thunk';
+import {Action} from 'redux';
+import {useSelector} from 'react-redux';
 
 const HomeStyle = styled.div`
 	padding-top: 2rem;
@@ -21,14 +26,34 @@ const TestList = styled.div`
 
 
 function Home() {
+	const dispatch: ThunkDispatch<AppStateType, void, Action> = useDispatch();
+	
+	useEffect(() => {
+		dispatch(allTestsAction());
+	}, []);
+
+	const {tests, isLoading} = useSelector((state: AppStateType) => state.testsInfo);
+	
   return (
 	 	<HomeStyle>
 	 		<h2>Тестовые модули</h2>
-	   <TestList>
-	   	<Test img_link={img6}/>
-	   	<Test img_link={img6}/>
-	   	<Test img_link={img6}/>
-	   </TestList>
+	 		{isLoading 
+	 			? <h2>Loading...</h2> 
+	 			: <TestList>
+	 				{tests.map(test => {
+	 					return <Test 
+	 					img_link={img6} 
+	 					name={test.name} 
+	 					complexity={test.complexity}
+	 					slug={test.slug}
+	 					id={test.id}
+	 					description={test.description}
+	 					key={test.slug}
+	 					technique={test.technique}
+	 					quantity={test.quantity}
+	 					/>
+	 				})}
+	 			</TestList>}   
 	  </HomeStyle>
   );
 }

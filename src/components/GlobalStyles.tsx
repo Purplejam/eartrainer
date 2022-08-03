@@ -74,6 +74,9 @@ export const GlobalStyle = createGlobalStyle`
        p {
            font-size: 0.7rem;
        }
+       button.simple-button {
+          font-size: 0.8rem; 
+       }
        h2 {
            font-size: 2rem;
        } 
