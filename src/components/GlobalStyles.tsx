@@ -2,8 +2,8 @@ import {createGlobalStyle} from 'styled-components'
 
 const red = '#EF4F4F';
 const lightred = '#EE9595';
-const lightblue = '#B5EAEA';
-const lightgreen = '#74C7B8';
+const lightblue = '#9DDDDB';
+const darkblue = '#6B7AA1';
 
 export const GlobalStyle = createGlobalStyle`
     *{
@@ -63,8 +63,12 @@ export const GlobalStyle = createGlobalStyle`
         border: none;
         transition: all 100ms ease-in;
         &:hover {
-          background-color: ${lightred};
+          opacity: 0.8;
         }
+    }
+    button.inactive {
+        background-color: ${lightred};
+        cursor: not-allowed;
     }
     @media (max-width: 768px) {
        h3 {

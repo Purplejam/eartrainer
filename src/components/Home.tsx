@@ -24,7 +24,7 @@ const TestList = styled.div`
 	grid-row-gap: 2rem;
 `
 
-
+//main component
 function Home() {
 	const dispatch: ThunkDispatch<AppStateType, void, Action> = useDispatch();
 	

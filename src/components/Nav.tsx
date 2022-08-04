@@ -35,6 +35,7 @@ const Logo = styled.h3`
 	cursor: pointer;
 `
 
+//main component
 function Nav() {
   return (
     <NavStyle>

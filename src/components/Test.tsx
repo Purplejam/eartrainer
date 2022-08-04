@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import fullStar from '../img/star-full.png';
 import emptyStar from '../img/star-empty.png';
+import {Link} from "react-router-dom";
+import {currentTestAction} from '../actions/currentTestAction';
+import {useDispatch} from 'react-redux';
+import {AppStateType} from '../reducers/index';
+import {ThunkDispatch} from 'redux-thunk';
+import {Action} from 'redux';
 
 
 type TestPropsTypes = {
@@ -74,9 +80,17 @@ function getStarRaiting(qty: number) {
 	}
 }
 
+//main component
 function Test({img_link, name, slug, complexity, description, quantity, technique}: TestPropsTypes) {
+
+	const dispatch: ThunkDispatch<AppStateType, void, Action> = useDispatch();
+	function currentTestHandler(slug: string) {
+		dispatch(currentTestAction(slug));
+	}
+
  return (
-   <TestStyle>
+ 	<Link to="/current-test">
+   <TestStyle onClick={() => currentTestHandler(slug)}>
    	<h3>{name}</h3>
    	<div>
    		<img src={img_link} alt="testtest"/>
@@ -89,6 +103,7 @@ function Test({img_link, name, slug, complexity, description, quantity, techniqu
    	</Description>
    	<button className="simple-button">Пройти тест</button>
    </TestStyle>
+  </Link>
  );
 }
 
