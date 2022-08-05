@@ -11,11 +11,6 @@ type currentTestSate = {
 	tests: testType[]
 }
 
-type answerTypeList = {
-	id: number,
-	answer: string
-}[]
-
 export interface answerTypeRecords {
    [key: string]: {
 				id: number,
@@ -41,39 +36,76 @@ const MainTest = styled.div`
 	}
 `
 const AnswersStyle = styled.div`
+padding: 0.5rem 0rem;
+.answer-box {
+	padding-bottom: 1rem;
+}
 	input, label {
 		cursor: pointer;
-		line-height:1.4rem;
 	}
 	label {
-		padding-left: 0.5rem;
+		display: inline-block;
+		p {
+			padding: 0.5rem 0.5rem 0.2rem 0.5rem;
+			display: inline-block;
+			color: #333;
+			font-size: 1rem;
+			line-height: 100%;
+			font-weight: 500;
+		}
 	}
-	padding: 0.5rem 0rem;
+	
 	button {
 		margin-top: 1rem;
+	}
+	button.error-button {
+		&:after {
+			color: red;
+		}
+	}
+	button.simple-button {
+		margin-left: 2rem;
 	}
 `
 
 
 //main component
 function CurrentTest() {
-
 	//collect all tests from store in shuffled order
 	const {tests, isLoading}: currentTestSate = useSelector((state: AppStateType) => state.currentTest);
 	//set all user`s answers
 	const [answerList, setAnswerList] = useState<answerTypeRecords>({});
 	//answer on current test
 	const [answer, setAnswer] = useState('');
-	//single current test
+	//set single current test
 	const [singleTest, setSingleTest] = useState<testType>(tests[0]);
-	//index of current test
+	//set index of current test
 	const [currentIndex, setCurrentIndex] = useState<number>(0);
+	//is test answered already
+	const [isAnswered, setAnswered] = useState<boolean>(() => answerList.hasOwnProperty(currentIndex));
+
+	useEffect(() => {
+		setAnswered(() => answerList.hasOwnProperty(currentIndex));
+	}, [currentIndex])
 
 	//change test on click
 	function changeSingleTest(n: number) {
-		setSingleTest(tests[n]);
-		setCurrentIndex(n);
-		setAnswer('');
+		if (n === tests.length) {
+			for (let i = 0; i < tests.length; i++) {
+				if (answerList.hasOwnProperty(i)) {
+					continue;
+				} else if (!answerList.hasOwnProperty(i)) {
+					setSingleTest(tests[i]);
+					setCurrentIndex(i);
+					setAnswer('');
+					break;					
+				}
+			}
+		} else {
+			setSingleTest(tests[n]);
+			setCurrentIndex(n);
+			setAnswer('');			
+		}
 	}
 
 	//set current answer
@@ -94,6 +126,7 @@ function CurrentTest() {
 		changeSingleTest(currentIndex + 1);		
 	}
 
+
  return (
    <TestBox>
    	<CurrentTestNav 
@@ -105,32 +138,60 @@ function CurrentTest() {
    	<MainTest>
    		<h3>{singleTest?.question}</h3>
    		<div>Послушать аудио {'>>>'}</div>
-   		{//TODO 2. Add player component from another project
+   		{
+   			//TODO 2. Add player component from another project
    		}
    		<p>{singleTest?.audio}</p>
-   		<h4>Выберите правильный вариант:</h4>
+   		<h4>{isAnswered 
+						? "Ваш вариант:" 
+						: "Укажите правильный вариант:"}
+	   	</h4>
    		<AnswersStyle>
-   			{singleTest?.answers.map((item: {id: number, answer: string}) => {
+					<div className="answer-box">   			
+						{singleTest?.answers.map((item: {id: number, answer: string}) => {
    				return (
    					<div key={item.id}>
-  							<input 
-  							checked={item.answer === answer ? true : false}
-  							name="answersInput" 
-  							value={item.answer} 
-  							type='radio' id={`check-${item.id}`} 
-  							onChange={checkBoxHandler}/>
-									<label htmlFor={`check-${item.id}`}>{item.answer}</label>
+	   					<label
+									className={`${isAnswered !== false 
+										&& item?.answer === answerList[currentIndex]?.answer
+										? 'bold-test'
+										: ''}`} 
+									htmlFor={`check-${item.id}`}>
+
+		 							<input 
+		 							checked={answer === item.answer
+		 								? true
+		 								: false}
+		 							name="answersInput" 
+		 							value={item.answer} 
+		 							type='radio' id={`check-${item.id}`} 
+		 							onChange={checkBoxHandler}/>
+
+										<p>{item.answer}</p>
+
+									</label>
    					</div>
    					)
    			})}
-   			{Object.keys(answerList).length === (tests.length - 1) && !answerList.hasOwnProperty(currentIndex)
+					</div>
+					{
+						//TODO 2. Make normal skip if test is answered
+					}
+   			{Object.keys(answerList).length === (tests.length - 1) && isAnswered === false
    				? <button
-   						className={`simple-button ${answer === '' ? "inactive" : ""}`}>Завершить тест!</button>
-   						//TODO 1. Add button skip
-   				: <button onClick={() => newAnswerHandler()}
-   						className={`simple-button ${answer === '' ? "inactive" : ""}`}>Ответить</button>
+   						className={`main-button ${answer === '' ? "inactive" : ""}`}>Завершить тест!</button> 		
+   				: <>
+	   						<button 
+	   						onClick={(e) => answer !== '' 
+	   						? newAnswerHandler() : null}
+	   						className={`main-button ${answer === '' ? "inactive" : ""}`}>{isAnswered 
+	   							? "Изменить ответ" 
+	   							: "Ответить"}</button>
+	   						<button 
+	   						className="simple-button" 
+	   						onClick={() => changeSingleTest(currentIndex + 1)}>Пропустить</button>
+   						</>
    			}
-
    		</AnswersStyle>
    	</MainTest>
    </TestBox>

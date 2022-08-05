@@ -13,7 +13,9 @@ const NavStyle = styled.nav`
 			display: inline-block;
 			padding: 0rem 0.5rem;
 			font-weight: 600;
+			cursor: pointer;
 			a {
+				padding: 1.5rem 0rem;
 				line-height: 10vh;
 			}
 			&:after {

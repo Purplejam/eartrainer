@@ -54,20 +54,40 @@ export const GlobalStyle = createGlobalStyle`
     img{
         display: block;
     }
-    button.simple-button {
-        padding: 0.5rem 2rem;
+    .bold-test {   
+        border-bottom: 2px solid #333;
+        p {
+           font-weight: 800 !important; 
+        }
+    }
+    button.main-button {
+        padding: 0.4rem 2rem;
         background-color: ${red};
         font-size: 1rem;
         color: #fff;
         cursor: pointer;
-        border: none;
+        border: 2px solid ${red};
         transition: all 100ms ease-in;
         &:hover {
           opacity: 0.8;
         }
     }
+    button.simple-button {
+        padding: 0.4rem 2rem;
+        background-color: transparent;
+        font-size: 1rem;
+        color: ${darkblue};
+        cursor: pointer;
+        border: 2px solid ${darkblue};
+        transition: all 100ms ease-in;
+        &:hover {
+          color: #fff;
+          background-color: ${darkblue};
+        }
+    }
     button.inactive {
         background-color: ${lightred};
+        border: 2px solid ${lightred};
         cursor: not-allowed;
     }
     @media (max-width: 768px) {

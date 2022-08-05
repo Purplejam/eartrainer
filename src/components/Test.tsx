@@ -101,7 +101,7 @@ function Test({img_link, name, slug, complexity, description, quantity, techniqu
    		<p><b>Тестов:</b>{quantity}</p>
    		<p className="test-description">{description}</p>
    	</Description>
-   	<button className="simple-button">Пройти тест</button>
+   	<button className="main-button">Пройти тест</button>
    </TestStyle>
   </Link>
  );
