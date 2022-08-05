@@ -69,7 +69,8 @@ export const GlobalStyle = createGlobalStyle`
         border: 2px solid ${red};
         transition: all 100ms ease-in;
         &:hover {
-          opacity: 0.8;
+          background-color: ${lightred};
+          border: 2px solid ${lightred};
         }
     }
     button.simple-button {

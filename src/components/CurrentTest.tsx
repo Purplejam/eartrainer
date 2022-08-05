@@ -38,7 +38,7 @@ const MainTest = styled.div`
 const AnswersStyle = styled.div`
 padding: 0.5rem 0rem;
 .answer-box {
-	padding-bottom: 1rem;
+	padding-bottom: 1.5rem;
 }
 	input, label {
 		cursor: pointer;
@@ -54,17 +54,43 @@ padding: 0.5rem 0rem;
 			font-weight: 500;
 		}
 	}
-	
 	button {
 		margin-top: 1rem;
 	}
-	button.error-button {
-		&:after {
-			color: red;
-		}
-	}
 	button.simple-button {
 		margin-left: 2rem;
+	}
+	button.main-button {
+		position: relative;
+		&.tooltip-active::before, &.tooltip-active::after {
+			--scale: 0;
+			position: absolute;
+			top: -200%;
+			left: 50%;
+			transform: translateX(-50%) translateY(120%) scale(var(--scale));
+			transition: transform 80ms ease-in;
+			transform-origin: top center;
+		}
+		&.tooltip-active::before {
+			content: attr(data-tooltip);
+			background-color: #B0B0B0;
+			width: max-content;
+			padding: 0.4rem 2px;
+			font-size: 0.7rem;
+			max-width: 100%;
+			width: 100%;
+			border-radius: .2rem;
+		}
+		&.tooltip-active:focus::after, &.tooltip-active:focus::before {
+			--scale: 1;
+		}
+		&.tooltip-active::after {
+			content: '';
+			border: 6px solid transparent;
+			border-bottom-color: #B0B0B0;
+			transform: translateX(-50%) translateY(160%) scale(var(--scale));
+			transform-origin: bottom center;
+		}
 	}
 `
 
@@ -94,7 +120,7 @@ function CurrentTest() {
 			for (let i = 0; i < tests.length; i++) {
 				if (answerList.hasOwnProperty(i)) {
 					continue;
-				} else if (!answerList.hasOwnProperty(i)) {
+				} else {
 					setSingleTest(tests[i]);
 					setCurrentIndex(i);
 					setAnswer('');
@@ -114,7 +140,7 @@ function CurrentTest() {
 	}
 
 	//add new answer
-	function newAnswerHandler() {
+	function newAnswerHandler(e: any) {
 		setAnswerList({
 			...answerList,
 			[currentIndex]: {
@@ -139,17 +165,17 @@ function CurrentTest() {
    		<h3>{singleTest?.question}</h3>
    		<div>Послушать аудио {'>>>'}</div>
    		{
-   			//TODO 2. Add player component from another project
+   			//TODO 3. Add player component from another project
    		}
    		<p>{singleTest?.audio}</p>
    		<h4>{isAnswered 
-						? "Ваш вариант:" 
+						? "Ваш указанный вариант:" 
 						: "Укажите правильный вариант:"}
 	   	</h4>
    		<AnswersStyle>
 					<div className="answer-box">   			
 						{singleTest?.answers.map((item: {id: number, answer: string}) => {
-   				return (
+   				 return (
    					<div key={item.id}>
 	   					<label
 									className={`${isAnswered !== false 
@@ -157,7 +183,9 @@ function CurrentTest() {
 										? 'bold-test'
 										: ''}`} 
 									htmlFor={`check-${item.id}`}>
-
+									{
+										//TODO 2. Custom style inputs!!
+									}
 		 							<input 
 		 							checked={answer === item.answer
 		 								? true
@@ -168,28 +196,29 @@ function CurrentTest() {
 		 							onChange={checkBoxHandler}/>
 
 										<p>{item.answer}</p>
-
 									</label>
    					</div>
    					)
    			})}
 					</div>
-					{
-						//TODO 2. Make normal skip if test is answered
-					}
-   			{Object.keys(answerList).length === (tests.length - 1) && isAnswered === false
+   			{Object.keys(answerList).length === (tests.length - 1) && !isAnswered
+   				//shows up when one last test left
    				? <button
-   						className={`main-button ${answer === '' ? "inactive" : ""}`}>Завершить тест!</button> 		
+   						className={`main-button ${answer === '' ? "inactive" : ""}`}>Завершить тест!</button>
+   				//show up when 1+ test left 		
    				: <>
-	   						<button 
-	   						onClick={(e) => answer !== '' 
-	   						? newAnswerHandler() : null}
+	   						<button
+	   						data-tooltip="Укажите ответ" 
+	   						onClick={(e: any) => answer !== '' 
+	   						? newAnswerHandler(e) : e.target.classList.add('tooltip-active')}
 	   						className={`main-button ${answer === '' ? "inactive" : ""}`}>{isAnswered 
 	   							? "Изменить ответ" 
 	   							: "Ответить"}</button>
 	   						<button 
 	   						className="simple-button" 
-	   						onClick={() => changeSingleTest(currentIndex + 1)}>Пропустить</button>
+	   						onClick={() => changeSingleTest(currentIndex + 1)}>{isAnswered 
+	   							? "Далее"
+	   							: "Пропустить"}</button>
    						</>
    			}
    		</AnswersStyle>

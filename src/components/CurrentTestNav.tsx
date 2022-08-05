@@ -29,12 +29,13 @@ const ThumbNailItem = styled.div`
 	text-align: center;
 	line-height: 2rem;
 	cursor: pointer;
-	&.activeNav {
-		background-color: #6B7AA1;
-	}
 	&.answeredNav {
 		background-color: #9DDDDB;
 	}
+	&.activeNav {
+		background-color: #6B7AA1;
+	}
+
 `
 
 //main component
