@@ -4,6 +4,8 @@ const red = '#EF4F4F';
 const lightred = '#EE9595';
 const lightblue = '#9DDDDB';
 const darkblue = '#6B7AA1';
+const darkblue01 = '#97A1BC';
+
 
 export const GlobalStyle = createGlobalStyle`
     *{
@@ -55,9 +57,11 @@ export const GlobalStyle = createGlobalStyle`
         display: block;
     }
     .bold-test {   
-        border-bottom: 2px solid #333;
+        border-bottom: 2px solid ${darkblue};
+
         p {
            font-weight: 800 !important; 
+           color: ${darkblue} !important;
         }
     }
     button.main-button {
@@ -69,8 +73,12 @@ export const GlobalStyle = createGlobalStyle`
         border: 2px solid ${red};
         transition: all 100ms ease-in;
         &:hover {
-          background-color: ${lightred};
-          border: 2px solid ${lightred};
+          background-color: #F27474;
+          border: 2px solid #F27474;
+        }
+        &.inactive:hover {
+          background-color: #EE9595;
+          border: 2px solid #EE9595;            
         }
     }
     button.simple-button {

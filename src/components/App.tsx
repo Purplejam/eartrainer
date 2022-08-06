@@ -3,7 +3,8 @@ import Home from './Home';
 import CurrentTest from './CurrentTest';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import {GlobalStyle} from './GlobalStyles';
-import styled from 'styled-components'; 
+import styled from 'styled-components';
+import FinishedTest from './FinishedTest'; 
 
 const AppContainer = styled.div`
 	padding: 0rem 5rem 5rem 5rem;
@@ -24,10 +25,11 @@ function App() {
   		<Nav/>
 
     <AppContainer>
-    	<GlobalStyle/>
+     <GlobalStyle/>
      <Routes>
        <Route path="/" element={<Home/>}/>
        <Route path="/current-test" element={<CurrentTest />}/>
+       <Route path="/finished-test" element={<FinishedTest />}/>
      </Routes>
     </AppContainer>
    </Router>

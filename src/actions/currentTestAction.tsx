@@ -15,13 +15,12 @@ function getCurrentTestData(slug: string) {
 
 
 export const currentTestAction = (slug: string) => async (dispatch: ThunkDispatch<AppStateType, void, Action>) => {
-	
-	const data = getCurrentTestData(slug);
-	
 	dispatch({
 		type: 'IS_LOADING'
 	})
-
+	
+	const data = getCurrentTestData(slug);
+	
 	dispatch({
 		type: 'FETCH_CURRENT_TEST',
 		payload: {

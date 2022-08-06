@@ -5,16 +5,23 @@ import {Action} from 'redux';
 import {useDispatch, useSelector} from 'react-redux';
 import {testType} from '../data/melodicIntervals01';
 import CurrentTestNav from './CurrentTestNav';
+import MainTestButton, {NextTestButton} from './MainTestButton';
+import { useNavigate } from "react-router-dom";
+import finishedTestAction from '../actions/finishedTestAction';
+import {currentTestAction} from '../actions/currentTestAction';
+import {ThunkDispatch} from 'redux-thunk';
+
 
 type currentTestSate = {
 	isLoading: boolean,
-	tests: testType[]
+	tests: testType[],
+	slug: string
 }
 
 export interface answerTypeRecords {
-   [key: string]: {
-				id: number,
-				answer: string
+ [key: string]: {
+		id: number,
+		answer: string
 	}
 }
 
@@ -45,52 +52,49 @@ padding: 0.5rem 0rem;
 	}
 	label {
 		display: inline-block;
+		padding: 0.5rem 0.5rem 0.2rem 0rem;
 		p {
-			padding: 0.5rem 0.5rem 0.2rem 0.5rem;
+			padding-left: 0.5rem;
 			display: inline-block;
 			color: #333;
 			font-size: 1rem;
-			line-height: 100%;
+			line-height: 1rem;
 			font-weight: 500;
 		}
 	}
 	button {
 		margin-top: 1rem;
 	}
-	button.simple-button {
-		margin-left: 2rem;
-	}
-	button.main-button {
-		position: relative;
-		&.tooltip-active::before, &.tooltip-active::after {
-			--scale: 0;
-			position: absolute;
-			top: -200%;
-			left: 50%;
-			transform: translateX(-50%) translateY(120%) scale(var(--scale));
-			transition: transform 80ms ease-in;
-			transform-origin: top center;
-		}
-		&.tooltip-active::before {
-			content: attr(data-tooltip);
-			background-color: #B0B0B0;
-			width: max-content;
-			padding: 0.4rem 2px;
-			font-size: 0.7rem;
-			max-width: 100%;
-			width: 100%;
-			border-radius: .2rem;
-		}
-		&.tooltip-active:focus::after, &.tooltip-active:focus::before {
-			--scale: 1;
-		}
-		&.tooltip-active::after {
-			content: '';
-			border: 6px solid transparent;
-			border-bottom-color: #B0B0B0;
-			transform: translateX(-50%) translateY(160%) scale(var(--scale));
-			transform-origin: bottom center;
-		}
+
+
+	.custom-checkbox {
+		--checkbox-color: #6B7AA1;
+		display: inline-grid;
+  place-content: center;
+  position: relative;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: var(--checkbox-color);
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid var(--checkbox-color);
+  border-radius: 4em;
+  transform: translateY(0);
+  &::before {
+  	border-radius: 4em;
+	  content: "";
+	  width: 0.65em;
+	  height: 0.65em;
+	  transform: scale(0);
+	  transition: 10ms transform ease-in-out;
+	  box-shadow: inset 1em 1em var(--checkbox-color);
+  }
+  &:checked::before {
+  	transform: scale(1);
+  }
 	}
 `
 
@@ -98,7 +102,7 @@ padding: 0.5rem 0rem;
 //main component
 function CurrentTest() {
 	//collect all tests from store in shuffled order
-	const {tests, isLoading}: currentTestSate = useSelector((state: AppStateType) => state.currentTest);
+	const {tests, slug, isLoading}: currentTestSate = useSelector((state: AppStateType) => state.currentTest);
 	//set all user`s answers
 	const [answerList, setAnswerList] = useState<answerTypeRecords>({});
 	//answer on current test
@@ -109,10 +113,20 @@ function CurrentTest() {
 	const [currentIndex, setCurrentIndex] = useState<number>(0);
 	//is test answered already
 	const [isAnswered, setAnswered] = useState<boolean>(() => answerList.hasOwnProperty(currentIndex));
+	//for navigation
+	const navigate = useNavigate();
+	const dispatch: ThunkDispatch<AppStateType, void, Action> = useDispatch();
 
 	useEffect(() => {
 		setAnswered(() => answerList.hasOwnProperty(currentIndex));
 	}, [currentIndex])
+
+	useEffect(() => {
+		if (Object.keys(answerList).length === (tests.length)) {
+			dispatch(finishedTestAction(slug, answerList));
+			navigate('/finished-test');
+		}
+	}, [answerList])
 
 	//change test on click
 	function changeSingleTest(n: number) {
@@ -140,7 +154,7 @@ function CurrentTest() {
 	}
 
 	//add new answer
-	function newAnswerHandler(e: any) {
+	function newAnswerHandler() {
 		setAnswerList({
 			...answerList,
 			[currentIndex]: {
@@ -152,78 +166,80 @@ function CurrentTest() {
 		changeSingleTest(currentIndex + 1);		
 	}
 
+	//finished test 
+	function finishTestHandler() {
+		setAnswerList({
+			...answerList,
+			[currentIndex]: {
+				id: singleTest.id,
+				answer: answer
+			}
+		});
+		setAnswer('');
+	}
 
  return (
-   <TestBox>
-   	<CurrentTestNav 
-   	answerList={answerList} 
-   	navigate={changeSingleTest} 
-   	index={currentIndex} 
-   	length={tests.length}/>
-
-   	<MainTest>
-   		<h3>{singleTest?.question}</h3>
-   		<div>Послушать аудио {'>>>'}</div>
-   		{
-   			//TODO 3. Add player component from another project
-   		}
-   		<p>{singleTest?.audio}</p>
-   		<h4>{isAnswered 
-						? "Ваш указанный вариант:" 
-						: "Укажите правильный вариант:"}
-	   	</h4>
-   		<AnswersStyle>
-					<div className="answer-box">   			
-						{singleTest?.answers.map((item: {id: number, answer: string}) => {
-   				 return (
-   					<div key={item.id}>
-	   					<label
-									className={`${isAnswered !== false 
-										&& item?.answer === answerList[currentIndex]?.answer
-										? 'bold-test'
-										: ''}`} 
-									htmlFor={`check-${item.id}`}>
-									{
-										//TODO 2. Custom style inputs!!
-									}
-		 							<input 
-		 							checked={answer === item.answer
-		 								? true
-		 								: false}
-		 							name="answersInput" 
-		 							value={item.answer} 
-		 							type='radio' id={`check-${item.id}`} 
-		 							onChange={checkBoxHandler}/>
-
-										<p>{item.answer}</p>
-									</label>
-   					</div>
-   					)
-   			})}
-					</div>
-   			{Object.keys(answerList).length === (tests.length - 1) && !isAnswered
-   				//shows up when one last test left
-   				? <button
-   						className={`main-button ${answer === '' ? "inactive" : ""}`}>Завершить тест!</button>
-   				//show up when 1+ test left 		
-   				: <>
-	   						<button
-	   						data-tooltip="Укажите ответ" 
-	   						onClick={(e: any) => answer !== '' 
-	   						? newAnswerHandler(e) : e.target.classList.add('tooltip-active')}
-	   						className={`main-button ${answer === '' ? "inactive" : ""}`}>{isAnswered 
-	   							? "Изменить ответ" 
-	   							: "Ответить"}</button>
-	   						<button 
-	   						className="simple-button" 
-	   						onClick={() => changeSingleTest(currentIndex + 1)}>{isAnswered 
-	   							? "Далее"
-	   							: "Пропустить"}</button>
-   						</>
-   			}
-   		</AnswersStyle>
-   	</MainTest>
-   </TestBox>
+ 	isLoading ? <h3>Loading...</h3>
+ 	: <TestBox>
+    	<CurrentTestNav 
+    	answerList={answerList} 
+    	navigate={changeSingleTest} 
+    	index={currentIndex} 
+    	length={tests.length}/>
+ 
+    	<MainTest>
+    		<h3>{singleTest?.question}</h3>
+    		<div>Послушать аудио {'>>>'}</div>
+    		{
+    			//TODO 2. Add player component from another project
+    		}
+    		<p>{singleTest?.audio}</p>
+    		<h4>{isAnswered 
+ 						? "Ваш указанный вариант:" 
+ 						: "Укажите правильный вариант:"}
+ 	   	</h4>
+    		<AnswersStyle>
+ 					<div className="answer-box">   			
+ 						{singleTest?.answers.map((item: {id: number, answer: string}) => {
+    				 return (
+    					<div key={item.id}>
+ 	   					<label
+ 									className={`${isAnswered !== false 
+ 										&& item?.answer === answerList[currentIndex]?.answer
+ 										? 'bold-test'
+ 										: ''}`} 
+ 									htmlFor={`check-${item.id}`}>
+ 		 							<input
+ 		 							className="custom-checkbox" 
+ 		 							checked={answer === item.answer
+ 		 								? true
+ 		 								: false}
+ 		 							name="answersInput" 
+ 		 							value={item.answer} 
+ 		 							type='radio' id={`check-${item.id}`} 
+ 		 							onChange={checkBoxHandler}/>
+ 
+ 										<p className="custom-checkbox-text">{item.answer}</p>
+ 									</label>
+    					</div>
+    					)
+    			})}
+ 					</div>
+    			{Object.keys(answerList).length === (tests.length - 1) && !isAnswered
+    				//renders when one last test left
+    				? <button
+    						className={`main-button ${answer === '' ? "inactive" : ""}`}
+    						onClick={(e: any) => answer !== '' 
+										? finishTestHandler() : e.target.classList.toggle('tooltip-active')}>Завершить тест!</button>
+    				//renders when 1+ test left 
+    				: <>
+    							<MainTestButton answer={answer} isAnswered={isAnswered} newAnswerHandler={newAnswerHandler}/>
+    							<NextTestButton changeSingleTest={changeSingleTest} currentIndex={currentIndex} isAnswered={isAnswered}/>
+    						</>
+    			}
+    		</AnswersStyle>
+    	</MainTest>
+    </TestBox>
  );
 }
 

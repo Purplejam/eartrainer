@@ -152,12 +152,6 @@ const tasks: tasksType = {
 	]
 }
 
-export const answers = {
-	0: 'Выше',
-	1: 'Ниже',
-	2: 'Ниже',
-	3: 'Выше',
-}
 
 
 export default tasks;
