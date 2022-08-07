@@ -1,3 +1,12 @@
+import audio1 from './melodicIntervals01-audio/01.mp3';
+import audio2 from './melodicIntervals01-audio/02.mp3';
+import audio3 from './melodicIntervals01-audio/03.mp3';
+import audio4 from './melodicIntervals01-audio/04.mp3';
+import audio5 from './melodicIntervals01-audio/05.mp3';
+import audio6 from './melodicIntervals01-audio/06.mp3';
+import audio7 from './melodicIntervals01-audio/07.mp3';
+import audio8 from './melodicIntervals01-audio/08.mp3';
+
 export type testType = {
 	id: number,
 	audio: string,
@@ -19,133 +28,153 @@ const tasks: tasksType = {
 	'tests': [
 	{
 		'id': 0,
-		'audio': 'audio-link-1',
-		'question': 'Вторая нота выше или ниже относительно первой?',
+		'audio': audio1,
+		'question': 'Квинта, кварта или терция?',
 		'answers': [
 			{	
 				'id': 0,
-				'answer': 'Ниже'
+				'answer': 'Квинта'
 			},
 			{
 				'id': 1,
-				'answer': 'Выше'
+				'answer': 'Кварта'
+			},
+			{
+				'id': 2,
+				'answer': 'Терция'
 			},
 		]
 	},
 	{
 		'id': 1,
-		'audio': 'audio-link-14',
-		'question': 'Мелодия движется вверх или вниз?',
+		'audio': audio2,
+		'question': 'Квинта, кварта или терция?',
 		'answers': [
 			{	
 				'id': 0,
-				'answer': 'Вверх'
+				'answer': 'Квинта'
 			},
 			{
 				'id': 1,
-				'answer': 'Вниз'
+				'answer': 'Кварта'
+			},
+			{
+				'id': 2,
+				'answer': 'Терция'
 			},
 		]
 	}, 
 	{
 		'id': 2,
-		'audio': 'audio-link-12',
-		'question': 'Вторая нота выше или ниже относительно первой?',
+		'audio': audio3,
+		'question': 'Малая терция, большая терция или кварта?',
 		'answers': [
 			{	
 				'id': 0,
-				'answer': 'Ниже'
+				'answer': 'Большая терция'
 			},
 			{
 				'id': 1,
-				'answer': 'Выше'
+				'answer': 'Малая терция'
 			},
 			{
 				'id': 2,
-				'answer': 'Ноты одинаковы'
+				'answer': 'Кварта'
 			},
 		]
 	}, 
 	{
 		'id': 3,
-		'audio': 'audio-link-16',
-		'question': 'Мелодия движется вверх или вниз?',
+		'audio': audio4,
+		'question': 'Малая терция, большая терция или кварта',
 		'answers': [
 			{	
 				'id': 0,
-				'answer': 'Вверх'
+				'answer': 'Квинта'
 			},
 			{
 				'id': 1,
-				'answer': 'Вниз'
+				'answer': 'Кварта'
+			},
+			{
+				'id': 2,
+				'answer': 'Терция'
 			},
 		]
 	},
 	{
 		'id': 4,
-		'audio': 'audio-link-26',
-		'question': 'Последняя нота фразы выше или ниже самой первой?',
+		'audio': audio5,
+		'question': 'Малая терция, большая терция или кварта?',
 		'answers': [
 			{	
 				'id': 0,
-				'answer': 'Ниже'
+				'answer': 'Большая терция'
 			},
 			{
 				'id': 1,
-				'answer': 'Выше'
+				'answer': 'Малая терция'
 			},
 			{
 				'id': 2,
-				'answer': 'Ноты одинаковы'
+				'answer': 'Кварта'
 			},
 		]
 	},
 	{
 		'id': 5,
-		'audio': 'audio-link-216',
-		'question': 'Последняя нота фразы выше или ниже самой первой?',
+		'audio': audio6,
+		'question': 'Квинта, кварта или терция?',
 		'answers': [
 			{	
 				'id': 0,
-				'answer': 'Ниже'
+				'answer': 'Квинта'
 			},
 			{
 				'id': 1,
-				'answer': 'Выше'
+				'answer': 'Кварта'
+			},
+			{
+				'id': 2,
+				'answer': 'Терция'
 			},
 		]
 	},
 	{
 		'id': 6,
-		'audio': 'audio-link-55',
-		'question': 'Последняя нота фразы выше или ниже самой первой?',
+		'audio': audio7,
+		'question': 'Малая терция, большая терция или кварта?',
 		'answers': [
 			{	
 				'id': 0,
-				'answer': 'Ниже'
+				'answer': 'Большая терция'
 			},
 			{
 				'id': 1,
-				'answer': 'Выше'
+				'answer': 'Малая терция'
+			},
+			{
+				'id': 2,
+				'answer': 'Кварта'
 			},
 		]
 	},
 	{
 		'id': 7,
-		'audio': 'audio-link-56',
-		'question': 'Последняя нота фразы выше или ниже самой первой?',
+		'audio': audio8,
+		'question': 'Квинта, кварта или терция?',
 		'answers': [
 			{	
 				'id': 0,
-				'answer': 'Ниже'
+				'answer': 'Квинта'
 			},
 			{
 				'id': 1,
-				'answer': 'Выше'
+				'answer': 'Кварта'
 			},
 			{
 				'id': 2,
-				'answer': 'Ноты одинаковы'
+				'answer': 'Терция'
 			},
 		]
 	},        

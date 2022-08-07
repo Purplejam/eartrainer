@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import finishedTestAction from '../actions/finishedTestAction';
 import {currentTestAction} from '../actions/currentTestAction';
 import {ThunkDispatch} from 'redux-thunk';
+import TestPlayer from './TestPlayer';
 
 
 type currentTestSate = {
@@ -189,11 +190,10 @@ function CurrentTest() {
  
     	<MainTest>
     		<h3>{singleTest?.question}</h3>
-    		<div>Послушать аудио {'>>>'}</div>
+    		<TestPlayer currentAudio={singleTest?.audio}/>
     		{
     			//TODO 2. Add player component from another project
     		}
-    		<p>{singleTest?.audio}</p>
     		<h4>{isAnswered 
  						? "Ваш указанный вариант:" 
  						: "Укажите правильный вариант:"}
