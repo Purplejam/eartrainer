@@ -105,9 +105,10 @@ input[type="range"]::-ms-thumb {
 @media screen and (max-width: 768px) {
 	.player {
 		width: 100%;
+		padding: 1rem 0;
 	}
   .time-control {
-    width: 75%;
+    width: 80%;
     p {
       padding: 0.8rem;
     }

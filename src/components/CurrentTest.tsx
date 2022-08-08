@@ -121,7 +121,7 @@ const AnswersStyle = styled.div`
 			width: 100%;
 		}
 	.answer-box {
-		padding-bottom: 2rem;
+		padding-bottom: 2.5rem;
 	}
 	}
 `
