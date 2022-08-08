@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const NavStyle = styled.nav`
 	padding: 0 5rem;
-	height: 10vh;
+	height: 4rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -19,12 +19,12 @@ const NavStyle = styled.nav`
 			cursor: pointer;
 			a {
 				padding: 1.5rem 0rem;
-				line-height: 10vh;
+				line-height: 3.6rem;
 			}
 			&:after {
 				display:block;
 		  content: '';
-		  border-bottom: solid 3px #F38BA0;  
+		  border-bottom: solid .2rem #F38BA0;  
 		  transform: scaleX(0);  
 		  transition: transform 180ms ease-in-out;
 		  transform-origin:  0% 50%;
@@ -32,7 +32,7 @@ const NavStyle = styled.nav`
 			&:before {
 				display:block;
 		  content: '';
-		  border-bottom: solid 3px #FFF;  
+		  border-bottom: solid .2rem #FFF;  
 		  transform: scaleX(0);  
 		  transition: transform 180ms ease-in-out;
 		  transform-origin:  0% 50%;

@@ -10,7 +10,6 @@ import {Action} from 'redux';
 
 
 type TestPropsTypes = {
-	img_link: string,
 	id: number,
 	complexity: number,
 	slug: string,
@@ -21,7 +20,9 @@ type TestPropsTypes = {
 }
 
 const TestStyle = styled.div`
-	padding: 1rem 0rem;
+	height: 100%;
+	position: relative;
+	padding: 2rem 2rem 4rem 2rem;
 	box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
 	border-radius: 1rem;
 	overflow: hidden;
@@ -33,28 +34,42 @@ const TestStyle = styled.div`
 		object-position: left top;
 	}
 	h3 {
-		padding: 1.5rem 2rem;
+		padding: 0;
 	} 
 	button {
-		margin-left: 2rem;
+		position: absolute;
+	 bottom: 1.5rem;
+	 left: 0;
+	 transform: translateX(2rem);
 	}
 `
 
 const Description = styled.div`
-	padding: 1.5rem 2rem 2.5rem 2rem;
+	padding: 1.5rem 0;
 	img {
 		display: inline-block;
 		width: 1rem;
 		height: 1rem;	
 	}
+
 	.test-description {
 		padding-top: 1rem;
 	}
-	p {
-		b {
-			padding-right: 0.7rem;
-		}
-	}
+
+.technique {
+	text-align: center;
+	display: inline-block;
+	padding: 0 .8rem;
+	border-radius: 20px;
+	background-color: #97A1BC;
+	color: white;
+	font-size: .8rem;
+	margin-bottom: 1rem;
+}
+
+.description-header {
+	padding-right: 0.8rem;
+}
 `
 
 const Raiting = styled.p`
@@ -81,7 +96,7 @@ function getStarRaiting(qty: number) {
 }
 
 //main component
-function Test({img_link, name, slug, complexity, description, quantity, technique}: TestPropsTypes) {
+function Test({name, slug, complexity, description, quantity, technique}: TestPropsTypes) {
 
 	const dispatch: ThunkDispatch<AppStateType, void, Action> = useDispatch();
 	function currentTestHandler(slug: string) {
@@ -92,13 +107,10 @@ function Test({img_link, name, slug, complexity, description, quantity, techniqu
  	<Link to="/current-test">
    <TestStyle onClick={() => currentTestHandler(slug)}>
    	<h3>{name}</h3>
-   	<div>
-   		<img src={img_link} alt="testtest"/>
-   	</div>
    	<Description>
-   		<p><b>{technique}</b></p>
-   		<Raiting><b>Сложность:</b>{getStarRaiting(complexity)}</Raiting>
-   		<p><b>Тестов:</b>{quantity}</p>
+   		<p className="technique"><b>{technique}</b></p>
+   		<Raiting><b className="description-header">Сложность:</b>{getStarRaiting(complexity)}</Raiting>
+   		<p><b className="description-header">Тестов:</b>{quantity}</p>
    		<p className="test-description">{description}</p>
    	</Description>
    	<button className="main-button">Пройти тест</button>

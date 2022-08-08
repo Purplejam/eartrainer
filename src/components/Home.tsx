@@ -1,6 +1,5 @@
 import Test from './Test';
 import styled from 'styled-components';
-import img6 from "../img/test-6.jpg";
 import {useEffect} from 'react';
 import {allTestsAction} from '../actions/testsInfoAction';
 import {useDispatch} from 'react-redux';
@@ -19,9 +18,10 @@ const HomeStyle = styled.div`
 const TestList = styled.div`
 	padding-top: 1.5rem;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-	grid-column-gap: 2rem;
-	grid-row-gap: 2rem;
+	grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+	grid-column-gap: 1rem;
+	grid-row-gap: 1rem;
+	grid-auto-rows: 1fr;
 `
 
 //main component
@@ -42,7 +42,6 @@ function Home() {
 	 			: <TestList>
 	 				{tests.map(test => {
 	 					return <Test 
-	 					img_link={img6} 
 	 					name={test.name} 
 	 					complexity={test.complexity}
 	 					slug={test.slug}

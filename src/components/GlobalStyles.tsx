@@ -108,7 +108,7 @@ export const GlobalStyle = createGlobalStyle`
            font-size: 0.8rem;
            padding: 1rem 0rem;
        }
-       label p, p, li {
+       label p, p, li, b {
            font-size: 0.7rem;
        }
        button.main-button, button.simple-button {
