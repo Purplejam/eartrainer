@@ -50,8 +50,8 @@ const AnswerItem = styled.div`
 	}
 	.item-body {
 		padding: 2rem 1rem;
-		border: 2px solid #97A1BC;
-		border-radius: 8px;	
+		border: 2px solid #f1f3f4;
+		border-radius: 5px;	
 	}
 	h4 {
 		padding-bottom: 1rem;

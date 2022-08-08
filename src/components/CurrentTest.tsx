@@ -44,7 +44,6 @@ const MainTest = styled.div`
 	}
 `
 const AnswersStyle = styled.div`
-padding: 0.5rem 0rem;
 .answer-box {
 	padding-bottom: 1.5rem;
 }

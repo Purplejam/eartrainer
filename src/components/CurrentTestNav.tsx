@@ -13,7 +13,7 @@ const ThumbNail = styled.div`
 	box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
 	border-radius: 0.2rem;
 	height: 10vh;
-	margin-bottom: 1vh;
+	margin-bottom: 2vh;
 	display: flex;
 	align-items: center;
 	justify-content: space-around;

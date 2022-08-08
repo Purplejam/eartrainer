@@ -8,12 +8,15 @@ const PlayerStyle = styled.div`
  display: flex;
  flex-direction: row;
  align-items: center;
- margin-bottom: 2rem;
- margin-top: 2rem;
+ padding: 2rem 0;
+ border: 2px solid #f1f3f4;
+	border-radius: 5px;
+	width: 50%;
+	margin-bottom: 1rem;	
 }
 
 .time-control {
-  width: 30%;
+  width: 75%;
   display: flex;
   align-items: center;
 	input {
@@ -28,9 +31,9 @@ const PlayerStyle = styled.div`
 }
 
 .play-control {
-	width: 4rem;
+	width: 15%;
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	svg {
 		color: #6B7AA1;
 		cursor: pointer;
@@ -71,6 +74,7 @@ const PlayerStyle = styled.div`
   transform: translateX(0%);
   padding: 1rem;
   pointer-events: none;
+  transition: transform 0ms linear;
 }
 
 input[type="range"]:focus {
@@ -126,6 +130,11 @@ function Player({currentAudio}: any) {
 	const pauseIcon = <FontAwesomeIcon onClick={playSongHandler} size="2x" className="pause" icon={faPause} />
 	
 	useEffect(() => {
+		setAudioInfo({
+    currentTime: 0,
+    duration: 0,
+    animatedInput: 0			
+		});
 		audioRef.current.play();
 		setPlaying(true);
 	}, [currentAudio])
@@ -193,7 +202,8 @@ function Player({currentAudio}: any) {
 										value={audioInfo.currentTime} 
 										max={audioInfo.duration} 
 										onChange={dragHandler}/>
-							<div style={{transform: `translateX(${audioInfo.animatedInput}%)`}} className="animate-track"></div>
+							<div style={{transform: `translateX(${audioInfo.animatedInput}%)`,
+							transition: `${isPlaying ? "transform 250ms linear" : "transform 0ms linear"}`}} className="animate-track"></div>
 					</div>
 				</div>
 	  <audio
