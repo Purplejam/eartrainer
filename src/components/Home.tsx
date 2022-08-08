@@ -22,6 +22,9 @@ const TestList = styled.div`
 	grid-column-gap: 1.5rem;
 	grid-row-gap: 1.5rem;
 	grid-auto-rows: 1fr;
+	@media (max-width: 415px) {
+		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+	}
 `
 
 //main component
