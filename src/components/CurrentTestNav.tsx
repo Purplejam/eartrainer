@@ -48,6 +48,8 @@ const ThumbNailItem = styled.div`
 	}
 `
 
+//TODO. Nav styles for mobile resolution
+
 //main component
 function CurrentTestNav({navigate, index, length, answerList}: currentTestNavType) {
 	let divs = [];

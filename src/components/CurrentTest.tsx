@@ -120,6 +120,9 @@ const AnswersStyle = styled.div`
 		button.main-button, button.simple-button {
 			width: 100%;
 		}
+	.answer-box {
+		padding-bottom: 2rem;
+	}
 	}
 `
 
@@ -215,9 +218,6 @@ function CurrentTest() {
     	<MainTest>
     		<h3>{singleTest?.question}</h3>
     		<TestPlayer currentAudio={singleTest?.audio}/>
-    		{
-    			//TODO 2. Add player component from another project
-    		}
     		<h4>{isAnswered 
  						? "Ваш указанный вариант:" 
  						: "Укажите правильный вариант:"}

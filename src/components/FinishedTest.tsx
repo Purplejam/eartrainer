@@ -33,7 +33,7 @@ const FinishedTestStyles = styled.div`
 	}
 `
 const AnswersBox = styled.div`
-padding: .5rem 0 4rem 0;
+	padding: .5rem 0 4rem 0;
 	
 `
 const AnswerItem = styled.div`
@@ -49,6 +49,7 @@ const AnswerItem = styled.div`
 		font-weight: 700;	
 	}
 	.item-body {
+		background-color: #f1f3f4;
 		padding: 2rem 1rem;
 		border: 2px solid #f1f3f4;
 		border-radius: 5px;	
@@ -86,13 +87,12 @@ function FinishedTest() {
 						return<AnswerItem key={answers.indexOf(answer)}>
 						<div className="item-body">
 							<h4>{answer.question}</h4>
-							<div>{answer.audio}</div>
 							{!answer.isCorrect 
 								? <>
-										<p className="incorrect">{answer.usersAnswer}</p>
-										<p className="correct">{answer.correct}</p>								
+										<p className="incorrect">{answer.usersAnswer.toLowerCase()}</p>
+										<p className="correct">Правильный ответ: {answer.correct.toLowerCase()}</p>								
 										</>
-								: <p className="correct">{answer.usersAnswer}</p>}
+								: <p className="correct">Правильный ответ: {answer.usersAnswer.toLowerCase()}</p>}
 							</div>
 						</AnswerItem>
 					})}

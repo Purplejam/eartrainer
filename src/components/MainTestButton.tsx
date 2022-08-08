@@ -17,16 +17,13 @@ const ButtonStyles = styled.button`
 		position: relative;
 
 		&.tooltip-active::before, &.tooltip-active::after {
-			--scale: 1;
   	--arrow-size: 6px;
   	--tooltip-color: #97A1BC;
-  	opacity: 1;
 			position: absolute;
 			top: -200%;
 			left: 50%;
-			transform: translateX(-50%) translateY(var(--translate-y, 0)) scale(var(--scale));
+			transform: translateX(-50%) translateY(var(--translate-y, 0));
 			transform-origin: top center;
-			transition: opacity 100ms ease-in;
 			cursor: pointer;
 		}
 		&.tooltip-active::before {
@@ -41,8 +38,6 @@ const ButtonStyles = styled.button`
 			border-radius: .2rem;
 		}
 		&.tooltip-active:focus::after, &.tooltip-active:focus::before {
-			--scale: 1;
-			opacity: 1;
 		}
 		&.tooltip-active::after {
 			--translate-y: calc(3.2 * var(--arrow-size));
@@ -50,6 +45,17 @@ const ButtonStyles = styled.button`
 			border: var(--arrow-size) solid transparent;
 			border-bottom-color: var(--tooltip-color);
 			transform-origin: bottom center;
+		}
+	}
+
+	@media (max-width: 415px) {
+		&.main-button {
+			&.tooltip-active::before {
+				--translate-y: calc(110% - var(--arrow-size));
+			}
+			&.tooltip-active::after {
+				--translate-y: calc(2 * var(--arrow-size));
+			}
 		}
 	}
 `
@@ -65,7 +71,8 @@ const NextButtonStyles = styled.button`
 		}
 	}
 `
-
+//mobile tooltip fix
+//delete tootip styles
 
 //main component
 function MainTestButton({answer, isAnswered, newAnswerHandler}: CurrentTestButtonType) {
