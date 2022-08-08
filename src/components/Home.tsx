@@ -13,6 +13,14 @@ const HomeStyle = styled.div`
 	h2 {
 		text-align: center;
 	}
+
+	@media (max-width: 768px) {
+		padding-top: 1rem;
+		h2 {
+   font-size: 1.5rem;
+   padding: 1rem 0;
+		}
+	}
 `
 
 const TestList = styled.div`
@@ -24,6 +32,7 @@ const TestList = styled.div`
 	grid-auto-rows: 1fr;
 	@media (max-width: 415px) {
 		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+		padding-top: 0;
 	}
 `
 

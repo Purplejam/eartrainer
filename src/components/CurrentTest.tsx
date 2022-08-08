@@ -29,6 +29,13 @@ export interface answerTypeRecords {
 //styles
 const TestBox = styled.div`
 	padding-top: 2.5rem;
+
+	@media (max-width: 768px){
+		padding-top: 1.5rem;
+	}
+	@media (max-width: 415px) {
+		padding-top: 1rem;
+	}
 `
 
 const MainTest = styled.div`
