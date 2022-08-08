@@ -59,6 +59,7 @@ const PlayerStyle = styled.div`
 
 .track {
   width: 100%;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
   height: 1rem;
   position: relative;
   overflow: hidden;
@@ -76,6 +77,7 @@ const PlayerStyle = styled.div`
   padding: 1rem;
   pointer-events: none;
   transition: transform 0ms linear;
+  cursor: pointer;
 }
 
 input[type="range"]:focus {

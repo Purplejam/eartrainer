@@ -17,15 +17,17 @@ const ButtonStyles = styled.button`
 		position: relative;
 
 		&.tooltip-active::before, &.tooltip-active::after {
-			--scale: 0;
+			--scale: 1;
   	--arrow-size: 6px;
   	--tooltip-color: #97A1BC;
+  	opacity: 1;
 			position: absolute;
 			top: -200%;
 			left: 50%;
 			transform: translateX(-50%) translateY(var(--translate-y, 0)) scale(var(--scale));
-			transition: transform 80ms ease-in;
 			transform-origin: top center;
+			transition: opacity 100ms ease-in;
+			cursor: pointer;
 		}
 		&.tooltip-active::before {
 			--translate-y: calc(140% - var(--arrow-size));
@@ -40,6 +42,7 @@ const ButtonStyles = styled.button`
 		}
 		&.tooltip-active:focus::after, &.tooltip-active:focus::before {
 			--scale: 1;
+			opacity: 1;
 		}
 		&.tooltip-active::after {
 			--translate-y: calc(3.2 * var(--arrow-size));
@@ -63,11 +66,13 @@ const NextButtonStyles = styled.button`
 	}
 `
 
+
 //main component
 function MainTestButton({answer, isAnswered, newAnswerHandler}: CurrentTestButtonType) {
 	return(
 			<ButtonStyles
-				data-tooltip="Укажите ответ" 
+				data-tooltip="Укажите ответ"
+				onMouseUp={(e) => e.preventDefault()} 
 				onClick={(e: any) => answer !== '' 
 				? newAnswerHandler() : e.target.classList.toggle('tooltip-active')}
 				className={`main-button ${answer === '' ? "inactive" : ""}`}>{isAnswered 
