@@ -19,8 +19,8 @@ const TestList = styled.div`
 	padding-top: 1.5rem;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
-	grid-column-gap: 1rem;
-	grid-row-gap: 1rem;
+	grid-column-gap: 1.5rem;
+	grid-row-gap: 1.5rem;
 	grid-auto-rows: 1fr;
 `
 

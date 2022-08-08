@@ -23,10 +23,15 @@ const TestStyle = styled.div`
 	height: 100%;
 	position: relative;
 	padding: 2rem 2rem 4rem 2rem;
-	box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
+	border: 2px solid #f1f3f4;
+	box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.1);
 	border-radius: 1rem;
 	overflow: hidden;
 	cursor: pointer;
+	transition: all 200ms ease-in;
+	&:hover {
+		box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
+	}
 	img {
 		height: 40vh;
 		width: 100%;
