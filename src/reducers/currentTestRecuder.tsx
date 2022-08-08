@@ -2,7 +2,7 @@ import {tasksType} from '../data/melodicIntervals01';
 
 const initialState = {
 	slug: '',
-	tasks: [
+	tests: [
 		{
 			id: 0,
 			audio: '',
@@ -14,7 +14,8 @@ const initialState = {
 			}
 			]
 		}
-	]
+	],
+	isLoading: true
 }
 
 const currentTestReducer = (state = initialState, action: {type: string, payload: {slug: string, tests: tasksType}}) => {

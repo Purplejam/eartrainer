@@ -71,8 +71,6 @@ const NextButtonStyles = styled.button`
 		}
 	}
 `
-//mobile tooltip fix
-//delete tootip styles
 
 //main component
 function MainTestButton({answer, isAnswered, newAnswerHandler}: CurrentTestButtonType) {

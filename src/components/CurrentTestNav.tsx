@@ -48,7 +48,7 @@ const ThumbNailItem = styled.div`
 	}
 `
 
-//TODO. Nav styles for mobile resolution
+//TODO. Nav styles for mobile width
 
 //main component
 function CurrentTestNav({navigate, index, length, answerList}: currentTestNavType) {

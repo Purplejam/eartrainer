@@ -113,16 +113,16 @@ const AnswersStyle = styled.div`
 		}
 	}
 
-	@media (max-width: 415px) {
-		button {
-			margin-top: .5rem;
+		@media (max-width: 415px) {
+			button {
+				margin-top: .5rem;
+			}
+			button.main-button, button.simple-button {
+				width: 100%;
+			}
+		.answer-box {
+			padding-bottom: 2.5rem;
 		}
-		button.main-button, button.simple-button {
-			width: 100%;
-		}
-	.answer-box {
-		padding-bottom: 2.5rem;
-	}
 	}
 `
 
@@ -144,6 +144,12 @@ function CurrentTest() {
 	//for navigation
 	const navigate = useNavigate();
 	const dispatch: ThunkDispatch<AppStateType, void, Action> = useDispatch();
+
+	useEffect(() => {
+		if (slug === '') {
+			navigate('/');
+		}
+	}, [slug])
 
 	useEffect(() => {
 		setAnswered(() => answerList.hasOwnProperty(currentIndex));
@@ -207,7 +213,7 @@ function CurrentTest() {
 	}
 
  return (
- 	isLoading ? <h3>Loading...</h3>
+ 	isLoading ? <h2 style={{textAlign: "center"}}>Loading...</h2>
  	: <TestBox>
     	<CurrentTestNav 
     	answerList={answerList} 

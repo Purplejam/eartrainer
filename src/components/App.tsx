@@ -21,15 +21,14 @@ function App() {
   return (
   	<Router>
   		<Nav/>
-
-    <AppContainer>
-     <GlobalStyle/>
-     <Routes>
-       <Route path="/" element={<Home/>}/>
-       <Route path="/current-test" element={<CurrentTest />}/>
-       <Route path="/finished-test" element={<FinishedTest />}/>
-     </Routes>
-    </AppContainer>
+      <AppContainer>
+      <GlobalStyle/>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/current-test" element={<CurrentTest />}/>
+        <Route path="/finished-test" element={<FinishedTest />}/>
+      </Routes>
+      </AppContainer>
    </Router>
   );
 }

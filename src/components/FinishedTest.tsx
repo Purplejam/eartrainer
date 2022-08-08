@@ -82,7 +82,6 @@ function FinishedTest() {
 					style={{'color': setFontColor(SuccessRate)}}>{succeededTests}</div>
 				</div>
 				<AnswersBox>
-				
 					{answers.map((answer: SingleAnswerType) => {
 						return<AnswerItem key={answers.indexOf(answer)}>
 						<div className="item-body">
