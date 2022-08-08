@@ -42,6 +42,14 @@ const MainTest = styled.div`
 	h4 {
 		padding: 1rem 0rem;
 	}
+
+	@media (max-width: 768px) {
+
+	}
+
+	@media (max-width: 415px) {
+		padding: 1rem 1.2rem;
+	}
 `
 const AnswersStyle = styled.div`
 .answer-box {
@@ -65,7 +73,6 @@ const AnswersStyle = styled.div`
 	button {
 		margin-top: 1rem;
 	}
-
 
 	.custom-checkbox {
 		--checkbox-color: #6B7AA1;
@@ -95,6 +102,24 @@ const AnswersStyle = styled.div`
   &:checked::before {
   	transform: scale(1);
   }
+	}
+
+	@media (max-width: 768px) {
+		label {
+			p {
+			font-size: 0.8rem;
+			line-height: 0.8rem;				
+			}
+		}
+	}
+
+	@media (max-width: 415px) {
+		button {
+			margin-top: .5rem;
+		}
+		button.main-button, button.simple-button {
+			width: 100%;
+		}
 	}
 `
 

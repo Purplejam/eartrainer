@@ -1,8 +1,11 @@
 import {Link} from "react-router-dom";
 import styled from 'styled-components';
+import headphones from '../img/ear-listen-solid.svg';
+import { faEarListen} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const NavStyle = styled.nav`
-	padding: 0rem 5rem 0rem 5rem;
+	padding: 0 5rem;
 	height: 10vh;
 	display: flex;
 	justify-content: space-between;
@@ -26,26 +29,48 @@ const NavStyle = styled.nav`
 		  transition: transform 180ms ease-in-out;
 		  transform-origin:  0% 50%;
 			}
+			&:before {
+				display:block;
+		  content: '';
+		  border-bottom: solid 3px #FFF;  
+		  transform: scaleX(0);  
+		  transition: transform 180ms ease-in-out;
+		  transform-origin:  0% 50%;
+			}
 			&:hover:after {
 				transform: scaleX(1); 
 			}
 		}
 	}
+
+	@media (max-width: 768px) {
+		padding: 0 3rem;
+	}
+
+	@media (max-width: 415px) {
+		padding: 0 1rem;
+	}
 `
 
 const Logo = styled.h3`
+	font-family: 'Kanit', sans-serif;
 	cursor: pointer;
+	svg {
+		padding-right: .5rem;
+	}
 `
+
+const logoEarIcon = <FontAwesomeIcon icon={faEarListen}/>
 
 //main component
 function Nav() {
   return (
     <NavStyle>
-    	<Logo>Eartrainer</Logo>
+    	<Link to="/"><Logo>{logoEarIcon}Eartrainer</Logo></Link>
 	     <div>
 	     	<ul>
 	     		<li><Link to="/">Главная</Link></li>
-	     		<li><Link to="/current-test">Пройти тест</Link></li>
+	     		<li><Link to="/current-test">Случайный тест</Link></li>
 	     	</ul>    	  	
 	    	</div>
     </NavStyle>

@@ -55,6 +55,12 @@ const NextButtonStyles = styled.button`
 		&.simple-button {
 		margin-left: 1.5rem;
 	}
+
+	@media (max-width: 415px) {
+		&.simple-button {
+			margin-left: 0;
+		}
+	}
 `
 
 //main component

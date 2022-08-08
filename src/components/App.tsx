@@ -7,16 +7,14 @@ import styled from 'styled-components';
 import FinishedTest from './FinishedTest'; 
 
 const AppContainer = styled.div`
-	padding: 0rem 5rem 5rem 5rem;
+  padding: 0rem 5rem 5rem 5rem;
 
-
-
-	@media (max-width: 768px) {
-	padding: 0rem 2rem 2rem 2rem;
-}
-@media (max-width: 400px) {
-	padding: 0rem 1rem 1rem 1rem;
-}
+  @media (max-width: 768px) {
+  	padding: 0rem 2rem 2rem 2rem;
+  }
+  @media (max-width: 415px) {
+  	padding: 0rem 1rem 1rem 1rem;
+  }
 `
 
 function App() {

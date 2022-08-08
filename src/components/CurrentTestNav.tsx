@@ -18,6 +18,10 @@ const ThumbNail = styled.div`
 	align-items: center;
 	justify-content: space-around;
 	padding: 0rem 6rem;
+
+	@media (max-width: 768px) {
+		padding: 0 1rem;
+	}
 `
 const ThumbNailItem = styled.div`
 	display: inline-block;
@@ -33,9 +37,15 @@ const ThumbNailItem = styled.div`
 		background-color: #9DDDDB;
 	}
 	&.activeNav {
-		background-color: #6B7AA1;
+		background: #6B7AA1;
 	}
 
+	@media (max-width: 768px) {
+		width: 1.6rem;
+		height: 1.6rem;
+		line-height: 1.6rem;
+		font-size: .7rem;
+	}
 `
 
 //main component

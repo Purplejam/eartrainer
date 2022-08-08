@@ -10,6 +10,7 @@ const PlayerStyle = styled.div`
  align-items: center;
  padding: 2rem 0;
  border: 2px solid #f1f3f4;
+ background-color: #f1f3f4;
 	border-radius: 5px;
 	width: 50%;
 	margin-bottom: 1rem;	
@@ -100,15 +101,18 @@ input[type="range"]::-ms-thumb {
 }
 
 @media screen and (max-width: 768px) {
+	.player {
+		width: 100%;
+	}
   .time-control {
-    width: 90%;
+    width: 75%;
     p {
       padding: 0.8rem;
     }
   }
 
   .play-control {
-    width:85%;
+    width:15%;
   }
 
   .time-counter {
