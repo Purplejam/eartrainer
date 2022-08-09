@@ -104,13 +104,14 @@ function getStarRaiting(qty: number) {
 function Test({name, slug, complexity, description, quantity, technique}: TestPropsTypes) {
 
 	const dispatch: ThunkDispatch<AppStateType, void, Action> = useDispatch();
+
 	function currentTestHandler(slug: string) {
 		dispatch(currentTestAction(slug));
 	}
 
  return (
- 	<Link to={`/current-test`}>
-   <TestStyle onClick={() => currentTestHandler(slug)}>
+ 	<Link to={`/current-test/${slug}`}>
+   <TestStyle>
    	<h3>{name}</h3>
    	<Description>
    		<p className="technique"><b>{technique}</b></p>

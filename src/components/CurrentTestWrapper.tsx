@@ -17,20 +17,20 @@ type currentTestSate = {
 function CurrentTestWrapper() {
 	const params = useParams();
 	const slug = params.slug;
+	
 	const [isLoading, setLoading] = useState(true);
-
 	const dispatch: ThunkDispatch<AppStateType, void, Action> = useDispatch();
 	
 	useEffect(() =>  {
 		dispatch(currentTestAction(slug));
 		setLoading(false);
-	}, [])
+	}, [slug])
 	
 	return(
 		<div>
 		{isLoading 
 			? <LoadingGif/>
-			: <CurrentTest/>}
+			: <CurrentTest />}
 		</div>
 		)
 }

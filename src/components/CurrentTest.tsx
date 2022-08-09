@@ -12,6 +12,8 @@ import {currentTestAction} from '../actions/currentTestAction';
 import {ThunkDispatch} from 'redux-thunk';
 import TestPlayer from './TestPlayer';
 import LoadingGif from './LoadingGif';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
 
 type currentTestSate = {
@@ -134,9 +136,45 @@ const AnswersStyle = styled.div`
 	}
 `
 
+const PrepareTestStyle = styled.div`
+cursor: pointer;
+color: #6B7AA1;
+text-align: center;
+.play-wrapper {
+	display: flex;
+	justify-content: center;	
+}
+span {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 100px;
+	background-color: #f1f3f4;
+	width: 12rem;
+	height: 12rem;
+	text-align: center;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
+	transition: all 100ms ease-in;
+	&:hover {
+	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);	
+	}
+}
+	svg {
+		margin-right: -.4rem;
+		font-size: 7rem;
+		color: #6B7AA1;
+		cursor: pointer;
+		transition: color 150ms;
+		&:hover {
+			color: #6B7AA1;
+		}
+	}
+`
+const playIcon = <FontAwesomeIcon className="play" icon={faPlay} />
 
 //main component
 function CurrentTest() {
+	const [prepareState, setPrepareState] = useState(true);
 	const {tests, slug, isLoading}: currentTestSate = useSelector((state: AppStateType) => state.currentTest);
 	//set all user`s answers
 	const [answerList, setAnswerList] = useState<answerTypeRecords>({});
@@ -229,6 +267,16 @@ function CurrentTest() {
     	length={tests.length}/>
  
     	<MainTest>
+    		{prepareState 
+    		? <PrepareTestStyle onClick={() => setPrepareState(false)}>
+							 	<h3>Начать тестирование</h3>
+							 	<div className="play-wrapper">
+								 	<span>
+								 		{playIcon}
+								 	</span>	 							 		
+							 	</div>
+					 		</PrepareTestStyle>
+					 : <>	
     		<h3>{singleTest?.question}</h3>
     		<TestPlayer currentAudio={singleTest?.audio}/>
     		<h4>{isAnswered 
@@ -275,6 +323,7 @@ function CurrentTest() {
     						</>
     			}
     		</AnswersStyle>
+    	</>}
     	</MainTest>
     </TestBox>
  );
