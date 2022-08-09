@@ -11,12 +11,13 @@ import finishedTestAction from '../actions/finishedTestAction';
 import {currentTestAction} from '../actions/currentTestAction';
 import {ThunkDispatch} from 'redux-thunk';
 import TestPlayer from './TestPlayer';
+import LoadingGif from './LoadingGif';
 
 
 type currentTestSate = {
 	isLoading: boolean,
 	tests: testType[],
-	slug: string
+	slug: any
 }
 
 export interface answerTypeRecords {
@@ -136,7 +137,6 @@ const AnswersStyle = styled.div`
 
 //main component
 function CurrentTest() {
-	//collect all tests from store in shuffled order
 	const {tests, slug, isLoading}: currentTestSate = useSelector((state: AppStateType) => state.currentTest);
 	//set all user`s answers
 	const [answerList, setAnswerList] = useState<answerTypeRecords>({});
@@ -220,7 +220,7 @@ function CurrentTest() {
 	}
 
  return (
- 	isLoading ? <h2 style={{textAlign: "center"}}>Loading...</h2>
+ 	isLoading ? <LoadingGif/>
  	: <TestBox>
     	<CurrentTestNav 
     	answerList={answerList} 

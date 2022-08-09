@@ -20,13 +20,13 @@ const NavStyle = styled.nav`
 			cursor: pointer;
 			a {
 				padding: 1.5rem 0rem;
-				line-height: 3.6rem;
+				line-height: 3.8rem;
 				color: #fff;
 			}
 			&:after {
 				display:block;
 		  content: '';
-		  border-bottom: solid .2rem #FFF;  
+		  border-bottom: solid .1rem #FFF;  
 		  transform: scaleX(0);  
 		  transition: transform 180ms ease-in-out;
 		  transform-origin:  0% 50%;
@@ -34,7 +34,7 @@ const NavStyle = styled.nav`
 			&:before {
 				display:block;
 		  content: '';
-		  border-bottom: solid .2rem #FFF;  
+		  border-bottom: solid .1rem #FFF;  
 		  transform: scaleX(0);  
 		  transition: transform 180ms ease-in-out;
 		  transform-origin:  0% 50%;

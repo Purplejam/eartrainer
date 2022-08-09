@@ -194,6 +194,7 @@ function Player({currentAudio}: any) {
  	})
  }
 
+
 	return(
 		<PlayerStyle>
 			<div className="player">

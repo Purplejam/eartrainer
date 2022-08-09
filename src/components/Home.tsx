@@ -7,6 +7,7 @@ import {AppStateType} from '../reducers/index';
 import {ThunkDispatch} from 'redux-thunk';
 import {Action} from 'redux';
 import {useSelector} from 'react-redux';
+import LoadingGif from './LoadingGif';
 
 const HomeStyle = styled.div`
 	padding-top: 2rem;
@@ -50,7 +51,7 @@ function Home() {
 	 	<HomeStyle>
 	 		<h2>Тестовые модули</h2>
 	 		{isLoading 
-	 			? <h2>Loading...</h2> 
+	 			? <LoadingGif/>
 	 			: <TestList>
 	 				{tests.map(test => {
 	 					return <Test 

@@ -109,8 +109,8 @@ function Test({name, slug, complexity, description, quantity, technique}: TestPr
 	}
 
  return (
- 	<Link to="/current-test">
-   <TestStyle onClick={() => currentTestHandler(slug)}>
+ 	<Link to={`/current-test/${slug}`}>
+   <TestStyle>
    	<h3>{name}</h3>
    	<Description>
    		<p className="technique"><b>{technique}</b></p>
