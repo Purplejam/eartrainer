@@ -12,15 +12,30 @@ type currentTestNavType = {
 const ThumbNail = styled.div`
 	box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.15);
 	border-radius: 0.2rem;
-	height: 10vh;
 	margin-bottom: 2vh;
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
-	padding: 0rem 6rem;
+	flex-wrap: wrap;
+	gap: .2rem .2rem;
+	padding: 1.5rem 6rem;
 
-	@media (max-width: 768px) {
-		padding: 0 1rem;
+	@media (max-width: 1060px) {
+		padding: 1rem 3rem;
+	}
+
+	@media (max-width: 1060px) {
+		padding: 1rem 1rem;
+	}
+
+	@media (max-width: 900px) {
+		padding: 1rem 1rem;
+		justify-content: flex-start;
+		align-content: center;
+	}
+
+	@media (max-width: 415px) {
+		padding: .5rem .5rem;
 	}
 `
 const ThumbNailItem = styled.div`
@@ -45,6 +60,7 @@ const ThumbNailItem = styled.div`
 		height: 1.6rem;
 		line-height: 1.6rem;
 		font-size: .7rem;
+		border-radius: 0;
 	}
 `
 

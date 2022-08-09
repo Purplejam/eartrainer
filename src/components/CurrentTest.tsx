@@ -137,6 +137,7 @@ const AnswersStyle = styled.div`
 `
 
 const PrepareTestStyle = styled.div`
+padding: 2rem 0;
 cursor: pointer;
 color: #6B7AA1;
 text-align: center;
@@ -156,7 +157,7 @@ span {
 	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
 	transition: all 100ms ease-in;
 	&:hover {
-	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);	
+	box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.15);	
 	}
 }
 	svg {
