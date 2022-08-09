@@ -31,6 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/current-test/:slug" element={<CurrentTestWrapper />}/>
+        <Route path="/current-test" element={<CurrentTest />}/>
         <Route path="/finished-test" element={<FinishedTest />}/>
       </Routes>
       </AppContainer>
