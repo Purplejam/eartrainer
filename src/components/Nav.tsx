@@ -10,7 +10,8 @@ const NavStyle = styled.nav`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	box-shadow: 0 1px 30px 0 rgba(32,33,36,0.28);
+	box-shadow: 0 1px 2px 0 rgba(32,33,36,0.28);
+	background-color: #333;
 	ul {
 		li {
 			display: inline-block;
@@ -20,11 +21,12 @@ const NavStyle = styled.nav`
 			a {
 				padding: 1.5rem 0rem;
 				line-height: 3.6rem;
+				color: #fff;
 			}
 			&:after {
 				display:block;
 		  content: '';
-		  border-bottom: solid .2rem #F38BA0;  
+		  border-bottom: solid .2rem #FFF;  
 		  transform: scaleX(0);  
 		  transition: transform 180ms ease-in-out;
 		  transform-origin:  0% 50%;
@@ -55,6 +57,7 @@ const NavStyle = styled.nav`
 const Logo = styled.h3`
 	font-family: 'Kanit', sans-serif;
 	cursor: pointer;
+	color: #fff;
 	svg {
 		padding-right: .5rem;
 	}

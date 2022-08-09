@@ -10,7 +10,7 @@ type currentTestNavType = {
 
 //styles
 const ThumbNail = styled.div`
-	box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.15);
 	border-radius: 0.2rem;
 	height: 10vh;
 	margin-bottom: 2vh;

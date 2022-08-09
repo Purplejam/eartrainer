@@ -39,7 +39,7 @@ const TestBox = styled.div`
 `
 
 const MainTest = styled.div`
-	box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.15);
 	border-radius: 1rem;
 	border-radius: 0.2rem;
 	padding: 1rem 3rem 3rem 3rem;
