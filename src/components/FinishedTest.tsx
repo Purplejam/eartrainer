@@ -1,8 +1,10 @@
 import {useDispatch, useSelector} from 'react-redux';
+import {useRef, useState} from 'react';
 import {AppStateType} from '../reducers/index';
 import {currentTestAction} from '../actions/currentTestAction';
 import {ThunkDispatch} from 'redux-thunk';
 import styled from 'styled-components';
+import SampleTestPlayer from './SampleTestPlayer';
 
 type SingleAnswerType = {
 		isCorrect: boolean,
@@ -37,7 +39,7 @@ const AnswersBox = styled.div`
 	
 `
 const AnswerItem = styled.div`
-	padding: 0 2rem;
+	padding: 0 1rem;
 	margin-bottom: 2rem;
 	.incorrect {
 		color: red;
@@ -46,16 +48,28 @@ const AnswerItem = styled.div`
 	}
 	.correct {
 		color: green;
-		font-weight: 700;	
+		font-weight: 700;
+		text-decoration: underline dotted;	
 	}
 	.item-body {
 		background-color: #f1f3f4;
-		padding: 2rem 1rem;
+		padding: 1rem 1rem 0 1rem;
 		border: 2px solid #f1f3f4;
 		border-radius: 5px;	
 	}
 	h4 {
 		padding-bottom: 1rem;
+		font-size: 1.1rem;
+	}
+
+	@media screen and (max-width: 768px) {
+		margin-bottom: 1rem;
+		.item-body {
+			padding: 0 1rem .5rem 1rem;
+		}
+		h4 {
+			font-size: 1rem;
+		}
 	}
 `
 
@@ -69,6 +83,12 @@ function setFontColor(SuccessRate: number) {
 function FinishedTest() {
 	const {answers, succeededTests, isLoading, slug} = useSelector((state: AppStateType) => state.finishedTest);
 	const SuccessRate = Math.floor(succeededTests / answers.length * 100);
+	const [playingAudio, setPlayingAudio] = useState(answers[0]?.audio);
+	const audioRef = useRef<any | HTMLAudioElement>(null);
+
+	function audioEndHandler() {
+		setPlayingAudio('');
+	}
 
 	return(
 		<FinishedTestStyles>
@@ -92,9 +112,20 @@ function FinishedTest() {
 										<p className="correct">Правильный ответ: {answer.correct.toLowerCase()}</p>								
 										</>
 								: <p className="correct">Правильный ответ: {answer.usersAnswer.toLowerCase()}</p>}
+								<SampleTestPlayer
+								setPlayingAudio={setPlayingAudio}
+								audioRef={audioRef}
+								currentAudio={answer.audio} 
+								playingAudio={playingAudio}/>
 							</div>
 						</AnswerItem>
 					})}
+
+	  		<audio
+	  		onEnded={audioEndHandler} 
+	    ref={audioRef} 
+	    src={playingAudio}>    
+	    </audio>
 				</AnswersBox>
 				</>
 			}
