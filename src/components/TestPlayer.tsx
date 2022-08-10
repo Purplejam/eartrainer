@@ -24,7 +24,7 @@ const PlayerStyle = styled.div`
     width: 100%;
     -webkit-appearance: none;
     background: transparent;
-    cursor: pointer;
+    cursor: col-resize;
 	}
 	p {
 		padding: 1.3rem;
@@ -77,7 +77,7 @@ const PlayerStyle = styled.div`
   padding: 1rem;
   pointer-events: none;
   transition: transform 0ms linear;
-  cursor: pointer;
+  cursor: col-resize;
 }
 
 input[type="range"]:focus {
@@ -126,17 +126,19 @@ input[type="range"]::-ms-thumb {
 
 function Player({currentAudio}: any) {
 	const [isPlaying, setPlaying] = useState<boolean>(false);
-  const [audioInfo, setAudioInfo] = useState({
-    currentTime: 0,
-    duration: 0,
-    animatedInput: 0
-  })
+	const [slowAnimation, setAnimation] = useState<boolean>(true);
+ const [audioInfo, setAudioInfo] = useState({
+   currentTime: 0,
+   duration: 0,
+   animatedInput: 0
+ })
 	const audioRef = useRef<any | HTMLAudioElement>(null);
 //icons
 	const playIcon = <FontAwesomeIcon onClick={playSongHandler} size="2x" className="play" icon={faPlay} />
 	const pauseIcon = <FontAwesomeIcon onClick={playSongHandler} size="2x" className="pause" icon={faPause} />
-	
+
 	useEffect(() => {
+		setAnimation(false);
 		setAudioInfo({
     currentTime: 0,
     duration: 0,
@@ -154,11 +156,11 @@ function Player({currentAudio}: any) {
 		} else {
 			audioRef.current.play();
 			setPlaying(true);
+			setTimeout(() => setAnimation(true), 100);
 		}
 	}
 
  function timeUpdateHandler(e: React.ChangeEvent<HTMLAudioElement>): void {
-
   let current = e.target.currentTime;
   let duration = e.target.duration;
   setAudioInfo({
@@ -174,19 +176,21 @@ function Player({currentAudio}: any) {
 		setAudioInfo({
 			...audioInfo,
 			currentTime: +e.target.value
-		})
+		});
 	}
 
  function getDurationHandler(e: React.ChangeEvent<HTMLAudioElement>): void  {
-   setAudioInfo({
-     ...audioInfo,
-     duration: e.target.duration,
-     animatedInput: 0
-   })
+		setAnimation(true);
+  setAudioInfo({
+    ...audioInfo,
+    duration: e.target.duration,
+    animatedInput: 0
+  })
  }
 
  function audioEndHandler() {
  	setPlaying(false);
+ 	setAnimation(false);
  	setAudioInfo({
  		...audioInfo,
  		currentTime: 0,
@@ -203,15 +207,19 @@ function Player({currentAudio}: any) {
 				</div>
 				<div className="time-control">
 					<div style={{background: `linear-gradient(to right, #6B7AA1, #97A1BC)`}} className="track">				
-						<input type="range" 
-										min={0} 
-										id="volume"
-										name="volume"
-										value={audioInfo.currentTime} 
-										max={audioInfo.duration} 
-										onChange={dragHandler}/>
-							<div style={{transform: `translateX(${audioInfo.animatedInput}%)`,
-							transition: `${isPlaying ? "transform 250ms linear" : "transform 0ms linear"}`}} className="animate-track"></div>
+						<input 
+							type="range" 
+							min={0} 
+							id="volume"
+							name="volume"
+							value={audioInfo.currentTime} 
+							max={audioInfo.duration} 
+							onChange={dragHandler}/>
+							<div 
+							style={{transform: `translateX(${audioInfo.animatedInput}%)`,
+							transition: `${slowAnimation 
+								? isPlaying ? "transform 250ms linear" : "transform 0ms linear"
+								: "transform 0ms linear"}`}} className="animate-track"></div>
 					</div>
 				</div>
 	  <audio
