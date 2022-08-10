@@ -34,7 +34,11 @@ const ThumbNail = styled.div`
 		align-content: center;
 	}
 
-	@media (max-width: 415px) {
+	@media (max-width: 768px) {
+		justify-content: space-between;
+	}
+
+	@media (max-width: 415px) {	
 		padding: .5rem .5rem;
 	}
 `
@@ -56,15 +60,14 @@ const ThumbNailItem = styled.div`
 	}
 
 	@media (max-width: 768px) {
-		width: 1.6rem;
-		height: 1.6rem;
+		width: 9%;
+		height: 9%;
 		line-height: 1.6rem;
 		font-size: .7rem;
 		border-radius: 0;
 	}
 `
 
-//TODO. Nav styles for mobile width
 
 //main component
 function CurrentTestNav({navigate, index, length, answerList}: currentTestNavType) {
