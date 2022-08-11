@@ -99,6 +99,17 @@ export const GlobalStyle = createGlobalStyle`
         border: 2px solid ${lightred};
         cursor: not-allowed;
     }
+
+    #nprogress .bar {
+      background: #9DDDDB;
+      height: 2px;
+    }
+
+    #nprogress .spinner-icon {
+      border-top-color: #9DDDDB;
+      border-left-color: #9DDDDB;
+    }
+
     @media (max-width: 768px) {
        h3 {
            font-size: 1rem;

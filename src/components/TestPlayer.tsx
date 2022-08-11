@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import {useState, useRef, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faAngleLeft, faAngleRight, faPause } from '@fortawesome/free-solid-svg-icons';
+//@ts-ignore
+import nprogress from 'nprogress';
+import 'nprogress/nprogress.css';
 
 const PlayerStyle = styled.div`
 .player {
@@ -138,17 +141,25 @@ function Player({currentAudio}: any) {
 	const pauseIcon = <FontAwesomeIcon onClick={playSongHandler} size="2x" className="pause" icon={faPause} />
 
 	useEffect(() => {
+		nprogress.start();
+		setPlaying(false);
 		setAnimation(false);
 		setAudioInfo({
     currentTime: 0,
     duration: 0,
     animatedInput: 0			
 		});
-		audioRef.current.play();
-		setPlaying(true);
+		startPlaying();
 	}, [currentAudio])
 
 //handlers
+	async function startPlaying() {
+		await audioRef.current.play();
+		setPlaying(true);
+		nprogress.done();
+	}
+
+
 	function playSongHandler(): void {
 		if (isPlaying) {
 			audioRef.current.pause();
