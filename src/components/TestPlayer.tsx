@@ -142,8 +142,8 @@ function Player({currentAudio}: any) {
 
 	useEffect(() => {
 		nprogress.start();
-		setPlaying(false);
 		setAnimation(false);
+		setPlaying(true);
 		setAudioInfo({
     currentTime: 0,
     duration: 0,
@@ -155,7 +155,6 @@ function Player({currentAudio}: any) {
 //handlers
 	async function startPlaying() {
 		await audioRef.current.play();
-		setPlaying(true);
 		nprogress.done();
 	}
 

@@ -48,7 +48,7 @@ const ButtonStyles = styled.button`
 		}
 	}
 
-	@media (max-width: 415px) {
+	@media (max-width: 446px) {
 		&.main-button {
 			&.tooltip-active::before {
 				--translate-y: calc(110% - var(--arrow-size));
@@ -65,7 +65,7 @@ const NextButtonStyles = styled.button`
 		margin-left: 1.5rem;
 	}
 
-	@media (max-width: 415px) {
+	@media (max-width: 446px) {
 		&.simple-button {
 			margin-left: 0;
 		}

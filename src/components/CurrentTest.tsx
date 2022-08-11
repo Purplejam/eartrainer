@@ -123,7 +123,7 @@ const AnswersStyle = styled.div`
 		}
 	}
 
-		@media (max-width: 415px) {
+		@media (max-width: 446px) {
 			button {
 				margin-top: .5rem;
 			}
