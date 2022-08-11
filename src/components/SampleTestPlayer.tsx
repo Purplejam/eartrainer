@@ -53,36 +53,42 @@ const PlayerStyle = styled.div`
 } 
 `
 
-function SampleTestPlayer({audioRef, currentAudio, playingAudio, setPlayingAudio}: any) {
+function SampleTestPlayer({audioRef, currentAudio, playingAudio, setPlayingAudio, isEnded, setEnded}: any) {
 	const [isPlaying, setPlaying] = useState<boolean>(false);
 
 	//icons
-	const playIcon = <FontAwesomeIcon onClick={playSongHandler} size="2x" className="play" icon={faPlay} />
-	const pauseIcon = <FontAwesomeIcon onClick={playSongHandler} size="2x" className="pause" icon={faPause} />
+	const playIcon = <FontAwesomeIcon size="2x" className="play" icon={faPlay} />
+	const pauseIcon = <FontAwesomeIcon size="2x" className="pause" icon={faPause} />
 
 	useEffect(() => {
-		if (playingAudio === currentAudio) {
-			audioRef.current.play();
-			setPlaying(true);			
-		} else if(playingAudio !== currentAudio) {
+	if (playingAudio !== currentAudio) {
 			setPlaying(false);	
 		}
 	}, [playingAudio])
+
 
 	//handlers
 	function playSongHandler(): void {
 		if (isPlaying) {
 			audioRef.current.pause();
 			setPlaying(false);
-		} else {
+		} else if (!isPlaying) {
 			audioRef.current.play();
 			setPlaying(true);
 		}
 	}
+
+	async function setAudioHandler() {
+		await setPlayingAudio(currentAudio);
+		playSongHandler();
+	}
+
 	return(
 		<PlayerStyle>
 			<div className="player">
-				<div className="play-control" onClick={() => setPlayingAudio(currentAudio)}>
+				<div className="play-control" onClick={() => {
+					setAudioHandler();
+				}}>
 				{isPlaying ? pauseIcon : playIcon}
 				</div>
 			</div>

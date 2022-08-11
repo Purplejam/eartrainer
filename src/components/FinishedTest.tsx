@@ -85,10 +85,8 @@ function FinishedTest() {
 	const SuccessRate = Math.floor(succeededTests / answers.length * 100);
 	const [playingAudio, setPlayingAudio] = useState(answers[0]?.audio);
 	const audioRef = useRef<any | HTMLAudioElement>(null);
+	const [isEnded, setEnded] = useState(false);
 
-	function audioEndHandler() {
-		setPlayingAudio('');
-	}
 
 	return(
 		<FinishedTestStyles>
@@ -113,6 +111,8 @@ function FinishedTest() {
 										</>
 								: <p className="correct">Правильный ответ: {answer.usersAnswer.toLowerCase()}</p>}
 								<SampleTestPlayer
+								setEnded={setEnded}
+								isEnded={isEnded}
 								setPlayingAudio={setPlayingAudio}
 								audioRef={audioRef}
 								currentAudio={answer.audio} 
@@ -122,9 +122,10 @@ function FinishedTest() {
 					})}
 
 	  		<audio
-	  		onEnded={audioEndHandler} 
+	  		onEnded={() => setPlayingAudio('')}
 	    ref={audioRef} 
-	    src={playingAudio}>    
+	    src={playingAudio}
+	    >    
 	    </audio>
 				</AnswersBox>
 				</>
