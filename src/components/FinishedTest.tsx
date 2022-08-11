@@ -6,6 +6,7 @@ import {ThunkDispatch} from 'redux-thunk';
 import styled from 'styled-components';
 import SampleTestPlayer from './SampleTestPlayer';
 
+
 type SingleAnswerType = {
 		isCorrect: boolean,
 		correct: string,
@@ -85,7 +86,6 @@ function FinishedTest() {
 	const SuccessRate = Math.floor(succeededTests / answers.length * 100);
 	const [playingAudio, setPlayingAudio] = useState(answers[0]?.audio);
 	const audioRef = useRef<any | HTMLAudioElement>(null);
-	const [isEnded, setEnded] = useState(false);
 
 
 	return(
@@ -111,8 +111,6 @@ function FinishedTest() {
 										</>
 								: <p className="correct">Правильный ответ: {answer.usersAnswer.toLowerCase()}</p>}
 								<SampleTestPlayer
-								setEnded={setEnded}
-								isEnded={isEnded}
 								setPlayingAudio={setPlayingAudio}
 								audioRef={audioRef}
 								currentAudio={answer.audio} 

@@ -35,6 +35,7 @@ const PlayerStyle = styled.div`
 }
 
 .play-control {
+	position: relative;
 	width: 15%;
 	display: flex;
 	justify-content: space-around;
@@ -140,8 +141,7 @@ function Player({currentAudio}: any) {
 	const playIcon = <FontAwesomeIcon onClick={playSongHandler} size="2x" className="play" icon={faPlay} />
 	const pauseIcon = <FontAwesomeIcon onClick={playSongHandler} size="2x" className="pause" icon={faPause} />
 
-	useEffect(() => {
-		nprogress.start();
+	useEffect(() => {	
 		setAnimation(false);
 		setPlaying(true);
 		setAudioInfo({
@@ -154,6 +154,7 @@ function Player({currentAudio}: any) {
 
 //handlers
 	async function startPlaying() {
+		nprogress.start();
 		await audioRef.current.play();
 		nprogress.done();
 	}
@@ -212,7 +213,7 @@ function Player({currentAudio}: any) {
 	return(
 		<PlayerStyle>
 			<div className="player">
-				<div className="play-control">
+				<div className="play-control" id="play-control">
 				{isPlaying ? pauseIcon : playIcon}
 				</div>
 				<div className="time-control">

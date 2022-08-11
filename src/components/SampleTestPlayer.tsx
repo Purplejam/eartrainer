@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import {useState, useRef, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faAngleLeft, faAngleRight, faPause } from '@fortawesome/free-solid-svg-icons';
+//@ts-ignore
+import nprogress from 'nprogress';
+import 'nprogress/nprogress.css';
 
 const PlayerStyle = styled.div`
 .player {
@@ -53,7 +56,7 @@ const PlayerStyle = styled.div`
 } 
 `
 
-function SampleTestPlayer({audioRef, currentAudio, playingAudio, setPlayingAudio, isEnded, setEnded}: any) {
+function SampleTestPlayer({audioRef, currentAudio, playingAudio, setPlayingAudio}: any) {
 	const [isPlaying, setPlaying] = useState<boolean>(false);
 
 	//icons
@@ -78,16 +81,27 @@ function SampleTestPlayer({audioRef, currentAudio, playingAudio, setPlayingAudio
 		}
 	}
 
+	async function startPlaying() {
+		nprogress.start();
+		setPlaying(true);
+		await audioRef.current.play();
+		nprogress.done();
+	}
+
 	async function setAudioHandler() {
-		await setPlayingAudio(currentAudio);
-		playSongHandler();
+		if (currentAudio !== playingAudio) {
+			await setPlayingAudio(currentAudio);
+		}
+		startPlaying();
 	}
 
 	return(
 		<PlayerStyle>
 			<div className="player">
 				<div className="play-control" onClick={() => {
-					setAudioHandler();
+					currentAudio !== playingAudio 
+					? setAudioHandler()
+					: playSongHandler()
 				}}>
 				{isPlaying ? pauseIcon : playIcon}
 				</div>
