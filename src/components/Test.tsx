@@ -7,7 +7,7 @@ import {useDispatch} from 'react-redux';
 import {AppStateType} from '../reducers/index';
 import {ThunkDispatch} from 'redux-thunk';
 import {Action} from 'redux';
-
+import getColor from '../lib/getColor';
 
 type TestPropsTypes = {
 	id: number,
@@ -66,7 +66,6 @@ const Description = styled.div`
 	display: inline-block;
 	padding: 0 .8rem;
 	border-radius: 20px;
-	background-color: #97A1BC;
 	color: white;
 	font-size: .8rem;
 	margin-bottom: 1rem;
@@ -104,7 +103,6 @@ function getStarRaiting(qty: number) {
 function Test({name, slug, complexity, description, quantity, technique}: TestPropsTypes) {
 
 	const dispatch: ThunkDispatch<AppStateType, void, Action> = useDispatch();
-
 	function currentTestHandler(slug: string) {
 		dispatch(currentTestAction(slug));
 	}
@@ -114,7 +112,9 @@ function Test({name, slug, complexity, description, quantity, technique}: TestPr
    <TestStyle>
    	<h3>{name}</h3>
    	<Description>
-   		<p className="technique"><b>{technique}</b></p>
+   		<p 
+   		style={{background: `${getColor(slug)}`}}
+   		className="technique"><b>{technique}</b></p>
    		<Raiting><b className="description-header">Сложность:</b>{getStarRaiting(complexity)}</Raiting>
    		<p><b className="description-header">Тестов:</b>{quantity}</p>
    		<p className="test-description">{description}</p>

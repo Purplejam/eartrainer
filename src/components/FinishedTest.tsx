@@ -5,6 +5,7 @@ import {currentTestAction} from '../actions/currentTestAction';
 import {ThunkDispatch} from 'redux-thunk';
 import styled from 'styled-components';
 import SampleTestPlayer from './SampleTestPlayer';
+import {useNavigate} from "react-router-dom";
 
 
 type SingleAnswerType = {
@@ -37,6 +38,23 @@ const FinishedTestStyles = styled.div`
 `
 const AnswersBox = styled.div`
 	padding: .5rem 0 4rem 0;
+	.button-box {
+		padding: 1rem 1rem 0 1rem;
+		display: flex;
+		justify-content: flex-start;
+		width: 100%;
+		gap: 1rem; 
+	}
+
+	@media screen and (max-width: 768px) {
+		.button-box {
+			flex-direction: column;
+			gap: .5rem; 
+			button {
+				width: 100%;
+			}
+		}
+	}
 	
 `
 const AnswerItem = styled.div`
@@ -86,6 +104,7 @@ function FinishedTest() {
 	const SuccessRate = Math.floor(succeededTests / answers.length * 100);
 	const [playingAudio, setPlayingAudio] = useState(answers[0]?.audio);
 	const audioRef = useRef<any | HTMLAudioElement>(null);
+	const navigate = useNavigate();
 
 
 	return(
@@ -125,9 +144,18 @@ function FinishedTest() {
 	    src={playingAudio}
 	    >    
 	    </audio>
+	    <div className="button-box">
+					<button 
+						onClick={() => navigate(`/current-test/${slug}`)}
+						className="main-button">Пройти заново</button>
+						<button
+						onClick={() => navigate('/')}
+						className="simple-button">Вернуться к тестам</button>	    	
+	    </div>
 				</AnswersBox>
 				</>
 			}
+
 		</FinishedTestStyles>
 		)
 }
