@@ -6,6 +6,8 @@ import audio5 from './melodicIntervals01-audio/05.mp3';
 import audio6 from './melodicIntervals01-audio/06.mp3';
 import audio7 from './melodicIntervals01-audio/07.mp3';
 import audio8 from './melodicIntervals01-audio/08.mp3';
+import audio9 from './melodicIntervals01-audio/09.mp3';
+import audio10 from './melodicIntervals01-audio/10.mp3';
 
 export type testType = {
 	id: number,
@@ -177,7 +179,45 @@ const tasks: tasksType = {
 				'answer': 'Терция'
 			},
 		]
-	},        
+	},
+	{
+		'id': 8,
+		'audio': audio9,
+		'question': 'Квинта, малая терция или большая терция?',
+		'answers': [
+			{	
+				'id': 0,
+				'answer': 'Большая терция'
+			},
+			{
+				'id': 1,
+				'answer': 'Малая терция'
+			},
+			{
+				'id': 2,
+				'answer': 'Квинта'
+			},
+		]
+	},
+	{
+		'id': 9,
+		'audio': audio10,
+		'question': 'Квинта, кварта или терция?',
+		'answers': [
+			{	
+				'id': 0,
+				'answer': 'Квинта'
+			},
+			{
+				'id': 1,
+				'answer': 'Терция'
+			},
+			{
+				'id': 2,
+				'answer': 'Кварта'
+			},
+		]
+	},           
 	]
 }
 

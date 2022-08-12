@@ -6,6 +6,8 @@ import audio5 from './melodicIntervals01-audio/05.mp3';
 import audio6 from './melodicIntervals01-audio/06.mp3';
 import audio7 from './melodicIntervals01-audio/07.mp3';
 import audio8 from './melodicIntervals01-audio/08.mp3';
+import audio9 from './melodicIntervals01-audio/09.mp3';
+import audio10 from './melodicIntervals01-audio/10.mp3';
 
 export interface answersDataTypeRecords {
    [key: number]: {
@@ -54,6 +56,16 @@ const answers: answersDataTypeRecords = {
 	7: {
 		'correct': 'Кварта',
 		'audio': audio8,
+		'question': 'Квинта, кварта или терция?'
+	},
+	8: {
+		'correct': 'Большая терция',
+		'audio': audio9,
+		'question': 'Квинта, малая терция или большая терция?'
+	},
+	9: {
+		'correct': 'Квинта',
+		'audio': audio10,
 		'question': 'Квинта, кварта или терция?'
 	},
 }
