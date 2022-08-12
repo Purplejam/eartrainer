@@ -5,22 +5,24 @@ import CurrentTestWrapper from './CurrentTestWrapper';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import {GlobalStyle} from './GlobalStyles';
 import styled from 'styled-components';
-import FinishedTest from './FinishedTest'; 
+import FinishedTest from './FinishedTest';
+import Footer from './Footer'; 
 
 const AppContainer = styled.div`
   padding: 0rem 5rem 5rem 5rem;
+  min-height: calc(100vh - 4rem);
 
   @media (max-width: 768px) {
   	padding: 0rem 2rem 2rem 2rem;
   }
   @media (max-width: 415px) {
-  	padding: 0rem 1rem 1rem 1rem;
+  	padding: 0rem 1rem 2rem 1rem;
+  }
+  @media (max-width: 330px) {
+    padding: 0rem .5rem 2rem .5rem;
   }
 `
 
-//TODO 1. Make current test wrapper
-//TODO 2. Wrapper takes a slug and make thunk-dispatch
-//TODO 3. If !isLoading => render Current Test
 
 function App() {
   return (
@@ -35,6 +37,7 @@ function App() {
         <Route path="/finished-test" element={<FinishedTest />}/>
       </Routes>
       </AppContainer>
+      <Footer/>
    </Router>
   );
 }
