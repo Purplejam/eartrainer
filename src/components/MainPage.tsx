@@ -24,6 +24,8 @@ const FirstScreen = styled.div`
 			padding: .6rem 2rem;
 			svg {
 				padding-left: 1.5rem;
+				animation: bounce 10s infinite;
+				animation-delay: 10s;
 			}
 		}
 	}
@@ -68,6 +70,18 @@ const FirstScreen = styled.div`
 				}
 			}
 		}
+	}
+
+	@keyframes bounce {
+	  0%, 4%, 10%, 16%, 20%, 100% {
+	    transform: translateY(0);
+	  }
+	  8% {
+	    transform: translateY(-6px);
+	  }
+	  12% {
+	    transform: translateY(-2px);
+	  }
 	}
 `
 

@@ -11,13 +11,18 @@ import LoadingGif from './LoadingGif';
 import MainPage from './MainPage'; 
 
 const HomeStyle = styled.div`
-	padding-top: 3rem;
+	&.container {
+		padding-top: 3rem;
+	}
+	
 	h2 {
 		text-align: center;
 	}
 
 	@media (max-width: 768px) {
-		padding-top: 2rem;
+		&.container {
+			padding-top: 2rem;
+		}
 		h2 {
    font-size: 1.5rem;
    padding: 1rem 0;
@@ -25,7 +30,9 @@ const HomeStyle = styled.div`
 	}
 
 	@media (max-width: 415px) {
-		padding-top: 1rem;
+		&.container {
+			padding-top: 1rem;
+		}	
 	}
 `
 

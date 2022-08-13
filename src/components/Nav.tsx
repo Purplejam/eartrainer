@@ -16,8 +16,10 @@ const NavStyle = styled.nav`
 		li {
 			display: inline-block;
 			padding: 0rem 0.5rem;
-			font-weight: 600;
+			font-weight: 400;
 			cursor: pointer;
+			font-size: .7rem;
+			text-transform: uppercase;
 			a {
 				padding: 1.5rem 0rem;
 				line-height: 3.8rem;
@@ -51,6 +53,10 @@ const NavStyle = styled.nav`
 
 	@media (max-width: 415px) {
 		padding: 0 1rem;
+
+		ul li {
+			font-size: .6rem;
+		}
 	}
 `
 
