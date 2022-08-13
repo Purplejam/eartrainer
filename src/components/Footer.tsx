@@ -20,6 +20,9 @@ const FooterStyle = styled.footer`
 
 	.social {
 		width: 30%;
+		h4 {
+			padding-bottom: .5rem;
+		}
 		.social-icons {
 			padding-top: .5rem;
 			display: grid;
@@ -37,7 +40,7 @@ const FooterStyle = styled.footer`
 	}
 
  @media (max-width: 768px) {
- 	padding: .5rem;
+ 	padding: 1rem;
  	flex-direction: column;
 
  	.author-info {

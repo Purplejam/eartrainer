@@ -41,7 +41,7 @@ const FinishedTestStyles = styled.div`
 const AnswersBox = styled.div`
 	padding: .5rem 0 4rem 0;
 	.button-box {
-		padding: 1rem 1rem 0 1rem;
+		padding-top: 1rem;
 		display: flex;
 		justify-content: flex-start;
 		width: 100%;
@@ -60,8 +60,7 @@ const AnswersBox = styled.div`
 	
 `
 const AnswerItem = styled.div`
-	padding: 0 1rem;
-	margin-bottom: 2rem;
+	margin-bottom: 1rem;
 	.incorrect {
 		color: red;
 		font-weight: 700;
@@ -74,7 +73,7 @@ const AnswerItem = styled.div`
 	}
 	.item-body {
 		background-color: #f1f3f4;
-		padding: 1rem 1rem 0 1rem;
+		padding: 2rem 2rem 0 2rem;
 		border: 2px solid #f1f3f4;
 		border-radius: 5px;	
 	}

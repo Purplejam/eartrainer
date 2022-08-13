@@ -48,6 +48,7 @@ const PlayerStyle = styled.div`
 
   .play-control {
     width:15%;
+    font-size: 1.1rem;
   }
 
   .time-counter {
