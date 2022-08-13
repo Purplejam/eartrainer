@@ -29,6 +29,11 @@ const finishedTestReducer = (state = InitialState, action: any) => {
 				isLoading: false
 			}
 		}
+		case 'RESET_FINISHED_ANDWERS' : {
+			return {
+				...InitialState
+			}
+		}
 		default : {
 			return {
 				...state

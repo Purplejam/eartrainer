@@ -1,11 +1,13 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {useRef, useState} from 'react';
 import {AppStateType} from '../reducers/index';
+import {Action} from 'redux';
 import {currentTestAction} from '../actions/currentTestAction';
 import {ThunkDispatch} from 'redux-thunk';
 import styled from 'styled-components';
 import SampleTestPlayer from './SampleTestPlayer';
 import {useNavigate} from "react-router-dom";
+import {finishedTestReset} from "../actions/finishedTestAction";
 
 
 type SingleAnswerType = {
@@ -103,12 +105,13 @@ function FinishedTest() {
 	const {answers, succeededTests, isLoading, slug} = useSelector((state: AppStateType) => state.finishedTest);
 	const SuccessRate = Math.floor(succeededTests / answers.length * 100);
 	const [playingAudio, setPlayingAudio] = useState(answers[0]?.audio);
+	const dispatch: ThunkDispatch<AppStateType, void, Action> = useDispatch();
 	const audioRef = useRef<any | HTMLAudioElement>(null);
 	const navigate = useNavigate();
 
 
 	return(
-		<FinishedTestStyles>
+		<FinishedTestStyles className="container">
 			<h3 className="main-header">Тестирование завершено</h3>
 			{isLoading
 				? <h3>Loading...</h3>
@@ -146,10 +149,16 @@ function FinishedTest() {
 	    </audio>
 	    <div className="button-box">
 					<button 
-						onClick={() => navigate(`/current-test/${slug}`)}
+						onClick={() => {
+							dispatch(finishedTestReset());
+							navigate(`/current-test/${slug}`);
+						}}
 						className="main-button">Пройти заново</button>
 						<button
-						onClick={() => navigate('/')}
+						onClick={() => {
+							dispatch(finishedTestReset());
+							navigate('/');
+						}}
 						className="simple-button">Вернуться к тестам</button>	    	
 	    </div>
 				</AnswersBox>

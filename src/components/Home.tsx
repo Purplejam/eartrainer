@@ -8,21 +8,27 @@ import {ThunkDispatch} from 'redux-thunk';
 import {Action} from 'redux';
 import {useSelector} from 'react-redux';
 import LoadingGif from './LoadingGif';
+import MainPage from './MainPage'; 
 
 const HomeStyle = styled.div`
-	padding-top: 2rem;
+	padding-top: 3rem;
 	h2 {
 		text-align: center;
 	}
 
 	@media (max-width: 768px) {
-		padding-top: 1rem;
+		padding-top: 2rem;
 		h2 {
    font-size: 1.5rem;
    padding: 1rem 0;
 		}
 	}
+
+	@media (max-width: 415px) {
+		padding-top: 1rem;
+	}
 `
+
 
 const TestList = styled.div`
 	padding-top: 1.5rem;
@@ -44,16 +50,18 @@ function Home() {
 	
 	useEffect(() => {
 		dispatch(allTestsAction());
-	}, []);
+	}, [dispatch]);
 
 	const {tests, isLoading} = useSelector((state: AppStateType) => state.testsInfo);
 	
   return (
-	 	<HomeStyle>
-	 		<h2>Тестовые модули</h2>
+  	<>
+  	<MainPage/>
+	 	<HomeStyle className="container" id="tests">
+	 	<h2>Тестовые модули</h2>
 	 		{isLoading 
 	 			? <LoadingGif/>
-	 			: <TestList>
+	 			: <TestList>			
 	 				{tests.map(test => {
 	 					return <Test 
 	 					name={test.name} 
@@ -68,6 +76,7 @@ function Home() {
 	 				})}
 	 			</TestList>}   
 	  </HomeStyle>
+	  </>
   );
 }
 

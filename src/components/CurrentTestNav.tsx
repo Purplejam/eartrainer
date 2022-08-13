@@ -41,6 +41,10 @@ const ThumbNail = styled.div`
 	@media (max-width: 415px) {	
 		padding: .5rem .5rem;
 	}
+
+	@media (max-width: 375px) {
+		margin-bottom: .5rem;
+	}
 `
 const ThumbNailItem = styled.div`
 	display: inline-block;

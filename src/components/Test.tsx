@@ -8,6 +8,8 @@ import {AppStateType} from '../reducers/index';
 import {ThunkDispatch} from 'redux-thunk';
 import {Action} from 'redux';
 import getColor from '../lib/getColor';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRightLong } from '@fortawesome/free-solid-svg-icons';
 
 type TestPropsTypes = {
 	id: number,
@@ -102,6 +104,7 @@ function getStarRaiting(qty: number) {
 //main component
 function Test({name, slug, complexity, description, quantity, technique}: TestPropsTypes) {
 
+	const rightIcon = <FontAwesomeIcon icon={faArrowRightLong} />
 	const dispatch: ThunkDispatch<AppStateType, void, Action> = useDispatch();
 	function currentTestHandler(slug: string) {
 		dispatch(currentTestAction(slug));
@@ -119,7 +122,7 @@ function Test({name, slug, complexity, description, quantity, technique}: TestPr
    		<p><b className="description-header">Тестов:</b>{quantity}</p>
    		<p className="test-description">{description}</p>
    	</Description>
-   	<button className="main-button">Пройти тест</button>
+   	<button className="main-button">Пройти тест {rightIcon}</button>
    </TestStyle>
   </Link>
  );

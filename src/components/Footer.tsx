@@ -12,14 +12,14 @@ const FooterStyle = styled.footer`
 
 	.author-info {
 		text-align: center;
-		width: 50%;
+		width: 70%;
 		p {
 			color: #fff;
 		}
 	}
 
 	.social {
-		width: 50%;
+		width: 30%;
 		.social-icons {
 			padding-top: .5rem;
 			display: grid;
@@ -73,13 +73,13 @@ function Footer() {
 			<div className="social">
 				<h4>Contact me:</h4>
 				<div className="social-icons">				
-					<a target="_blank" href="https://www.instagram.com/alexanderkkqq">
+					<a target="_blank" rel="noreferrer" href="https://www.instagram.com/alexanderkkqq">
 						{instIcon}
 					</a>
-					<a target="_blank" href="https://t.me/purplejamguitar">
+					<a target="_blank" rel="noreferrer" href="https://t.me/purplejamguitar">
 						{tgIcon}
 					</a>
-					<a target="_blank" href="https://github.com/Purplejam">
+					<a target="_blank" rel="noreferrer" href="https://github.com/Purplejam">
 						{gitIcon}
 					</a>
 				</div>

@@ -22,12 +22,13 @@ function CurrentTestWrapper() {
 	const dispatch: ThunkDispatch<AppStateType, void, Action> = useDispatch();
 	
 	useEffect(() =>  {
+		window.scrollTo(0, 0);
 		dispatch(currentTestAction(slug));
 		setLoading(false);
 	}, [slug])
 	
 	return(
-		<div>
+		<div className="container">
 		{isLoading 
 			? <LoadingGif/>
 			: <CurrentTest />}

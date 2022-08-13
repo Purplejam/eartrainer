@@ -79,6 +79,12 @@ const finishedTestAction = (slug: string, answerList: answerTypeRecords) => asyn
 	})
 }
 
+export const finishedTestReset = () => (dispatch: ThunkDispatch<AppStateType, void, Action>) => {
+	dispatch({
+		type: 'RESET_FINISHED_ANDWERS'
+	})
+}
+
 export default finishedTestAction;
 
 

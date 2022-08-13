@@ -28,6 +28,10 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Montserrat', sans-serif;
         width: 100%;
     }
+    .container {
+    padding: 0rem 5rem 5rem 5rem;
+    min-height: calc(100vh - 4rem);      
+    }
     h2{
         font-size: 2rem;
         font-weight: 600;
@@ -65,7 +69,7 @@ export const GlobalStyle = createGlobalStyle`
         }
     }
     button.main-button {
-        padding: 0.4rem 2rem;
+        padding: 0.4rem 1.5rem;
         background-color: ${red};
         font-size: 1rem;
         color: #fff;
@@ -79,6 +83,9 @@ export const GlobalStyle = createGlobalStyle`
         &.inactive:hover {
           background-color: #EE9595;
           border: 2px solid #EE9595;            
+        }
+        svg {
+          padding-left: 1rem;
         }
     }
     button.simple-button {
@@ -111,6 +118,9 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     @media (max-width: 768px) {
+       .container {
+         padding: 0rem 2rem 2rem 2rem;
+       }
        h3 {
            font-size: 1rem;
            padding: 1rem 0rem;
@@ -129,4 +139,16 @@ export const GlobalStyle = createGlobalStyle`
            font-size: 2rem;
        } 
     }
+   @media (max-width: 415px) {
+     .container {
+       padding: 0rem 1rem 2rem 1rem;
+     }
+   }
+   @media (max-width: 330px) {
+     .container {
+       padding: 0rem .5rem 2rem .5rem;
+     }
+   }
 `
+
+

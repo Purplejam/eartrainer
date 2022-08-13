@@ -8,12 +8,11 @@ import CurrentTestNav from './CurrentTestNav';
 import MainTestButton, {NextTestButton} from './MainTestButton';
 import { useNavigate } from "react-router-dom";
 import finishedTestAction from '../actions/finishedTestAction';
-import {currentTestAction} from '../actions/currentTestAction';
 import {ThunkDispatch} from 'redux-thunk';
 import TestPlayer from './TestPlayer';
 import LoadingGif from './LoadingGif';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faPlay} from '@fortawesome/free-solid-svg-icons';
 
 
 type currentTestSate = {
@@ -33,11 +32,14 @@ export interface answerTypeRecords {
 const TestBox = styled.div`
 	padding-top: 2.5rem;
 
-	@media (max-width: 768px){
+	@media (max-width: 768px) {
 		padding-top: 1.5rem;
 	}
 	@media (max-width: 415px) {
 		padding-top: 1rem;
+	}
+	@media (max-width: 375px) {
+		padding-top: .5rem;
 	}
 `
 
@@ -59,6 +61,14 @@ const MainTest = styled.div`
 
 	@media (max-width: 415px) {
 		padding: 1rem 1.2rem;
+	}
+
+	@media (max-width: 375px) {
+		padding: 0 1rem 1rem 1rem;
+
+	h4 {
+		padding: 0 0 .5rem 0;
+	}
 	}
 `
 const AnswersStyle = styled.div`
@@ -115,6 +125,7 @@ const AnswersStyle = styled.div`
 	}
 
 	@media (max-width: 768px) {
+		padding-bottom: 1rem;
 		label {
 			p {
 			font-size: 0.8rem;
@@ -137,14 +148,14 @@ const AnswersStyle = styled.div`
 `
 
 const PrepareTestStyle = styled.div`
-padding: 2rem 0;
+padding: 3rem 0;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
 cursor: pointer;
 color: #6B7AA1;
 text-align: center;
-.play-wrapper {
-	display: flex;
-	justify-content: center;	
-}
 span {
 	display: flex;
 	align-items: center;
@@ -161,13 +172,27 @@ span {
 	}
 }
 	svg {
-		margin-right: -.4rem;
+		margin-right: -.5rem;
 		font-size: 7rem;
 		color: #6B7AA1;
 		cursor: pointer;
 		transition: color 150ms;
 		&:hover {
 			color: #6B7AA1;
+		}
+	}
+
+	@media (max-width: 768px) {
+		padding: 1rem 0;
+
+		.play-wrapper {
+			span {
+				width: 8rem;
+				height: 8rem;	
+			}
+			svg {
+				font-size: 4rem;
+			}
 		}
 	}
 `
@@ -195,7 +220,7 @@ function CurrentTest() {
 		if (slug === '') {
 			navigate('/');
 		}
-	}, [slug])
+	}, [slug, navigate])
 
 	useEffect(() => {
 		setAnswered(() => answerList.hasOwnProperty(currentIndex));
@@ -207,6 +232,7 @@ function CurrentTest() {
 			navigate('/finished-test');
 		}
 	}, [answerList])
+
 
 	//change test on click
 	function changeSingleTest(n: number) {
