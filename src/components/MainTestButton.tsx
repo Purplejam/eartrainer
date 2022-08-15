@@ -12,6 +12,11 @@ type SkipTestButtonType = {
 	changeSingleTest: Function
 }
 
+type FinishTestButtonType = {
+	answer: string,
+	finishTestHandler: Function
+}
+
 const ButtonStyles = styled.button`
 		&.main-button {
 		position: relative;
@@ -98,6 +103,19 @@ export function NextTestButton({isAnswered, currentIndex, changeSingleTest}: Ski
 		</NextButtonStyles>
 		)
 }
+
+
+export function TestFinishButton({answer, finishTestHandler}: FinishTestButtonType) {
+	return(
+		<ButtonStyles
+		data-tooltip="Укажите ответ"
+		onMouseUp={(e) => e.preventDefault()} 
+		className={`main-button ${answer === '' ? "inactive" : ""}`}
+		onClick={(e: any) => answer !== '' 
+		? finishTestHandler() : e.target.classList.toggle('tooltip-active')}>Завершить тест!</ButtonStyles>
+		)
+}
+
 
 
 export default MainTestButton;

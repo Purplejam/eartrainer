@@ -45,15 +45,20 @@ const AnswersBox = styled.div`
 		display: flex;
 		justify-content: flex-start;
 		width: 100%;
-		gap: 1rem; 
+		.main-button {
+			margin-right: 1rem;
+		}
 	}
 
 	@media screen and (max-width: 768px) {
 		.button-box {
 			flex-direction: column;
-			gap: .5rem; 
 			button {
 				width: 100%;
+			}
+			.main-button {
+				margin-right: 0;
+				margin-bottom: .5rem;
 			}
 		}
 	}

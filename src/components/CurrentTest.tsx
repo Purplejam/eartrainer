@@ -13,6 +13,10 @@ import TestPlayer from './TestPlayer';
 import LoadingGif from './LoadingGif';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay} from '@fortawesome/free-solid-svg-icons';
+import {TestFinishButton} from './MainTestButton';
+//@ts-ignore
+import nprogress from 'nprogress';
+import 'nprogress/nprogress.css';
 
 
 type currentTestSate = {
@@ -228,11 +232,12 @@ function CurrentTest() {
 
 	useEffect(() => {
 		if (Object.keys(answerList).length === (tests.length)) {
+			nprogress.start();
 			dispatch(finishedTestAction(slug, answerList));
+			nprogress.done();
 			navigate('/finished-test');
 		}
 	}, [answerList])
-
 
 	//change test on click
 	function changeSingleTest(n: number) {
@@ -292,7 +297,6 @@ function CurrentTest() {
     	navigate={changeSingleTest} 
     	index={currentIndex} 
     	length={tests.length}/>
- 
     	<MainTest>
     		{prepareState 
     		? <PrepareTestStyle onClick={() => setPrepareState(false)}>
@@ -339,10 +343,7 @@ function CurrentTest() {
  					</div>
     			{Object.keys(answerList).length === (tests.length - 1) && !isAnswered
     				//renders when one last test left
-    				? <button
-    						className={`main-button ${answer === '' ? "inactive" : ""}`}
-    						onClick={(e: any) => answer !== '' 
-										? finishTestHandler() : e.target.classList.toggle('tooltip-active')}>Завершить тест!</button>
+    				? <TestFinishButton answer={answer} finishTestHandler={finishTestHandler}/>
     				//renders when 1+ test left 
     				: <>
     							<MainTestButton answer={answer} isAnswered={isAnswered} newAnswerHandler={newAnswerHandler}/>
