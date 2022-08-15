@@ -113,6 +113,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     #nprogress .spinner-icon {
+      display: none;
       border-top-color: #9DDDDB;
       border-left-color: #9DDDDB;
     }

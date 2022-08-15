@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {useState, useRef, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faAngleLeft, faAngleRight, faPause } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faAngleLeft, faAngleRight, faPause, faCompactDisc } from '@fortawesome/free-solid-svg-icons';
 //@ts-ignore
 import nprogress from 'nprogress';
 import 'nprogress/nprogress.css';
@@ -46,6 +46,9 @@ const PlayerStyle = styled.div`
 		&:hover {
 			color: #97A1BC
 		}
+	}
+	.loading-icon {
+		animation: loading 1s linear infinite;
 	}
 }
 
@@ -106,6 +109,15 @@ input[type="range"]::-ms-thumb {
   opacity:0;
 }
 
+@keyframes loading {
+ 0% { 
+   transform: rotate(0); 
+ }
+ 100% { 
+   transform: rotate(360deg);
+ }
+}
+
 @media screen and (max-width: 768px) {
 	.player {
 		width: 100%;
@@ -127,9 +139,11 @@ input[type="range"]::-ms-thumb {
   }
 } 
 `
+export const loadingDisc = <FontAwesomeIcon size="2x" className="loading-icon" icon={faCompactDisc} />
 
 function Player({currentAudio}: any) {
 	const [isPlaying, setPlaying] = useState<boolean>(false);
+	const [audioLoading, setLoading] = useState<boolean>(true);
 	const [slowAnimation, setAnimation] = useState<boolean>(true);
  const [audioInfo, setAudioInfo] = useState({
    currentTime: 0,
@@ -140,9 +154,11 @@ function Player({currentAudio}: any) {
 //icons
 	const playIcon = <FontAwesomeIcon onClick={playSongHandler} size="2x" className="play" icon={faPlay} />
 	const pauseIcon = <FontAwesomeIcon onClick={playSongHandler} size="2x" className="pause" icon={faPause} />
+	
 
 	useEffect(() => {	
 		setAnimation(false);
+		setLoading(true);
 		setPlaying(true);
 		setAudioInfo({
     currentTime: 0,
@@ -157,6 +173,7 @@ function Player({currentAudio}: any) {
 		nprogress.start();
 		await audioRef.current.play();
 		nprogress.done();
+		setTimeout(() => setLoading(false), 250);
 	}
 
 
@@ -214,7 +231,9 @@ function Player({currentAudio}: any) {
 		<PlayerStyle>
 			<div className="player">
 				<div className="play-control" id="play-control">
-				{isPlaying ? pauseIcon : playIcon}
+				{audioLoading 
+					? loadingDisc
+					: isPlaying ? pauseIcon : playIcon}
 				</div>
 				<div className="time-control">
 					<div style={{background: `linear-gradient(to right, #6B7AA1, #97A1BC)`}} className="track">				
