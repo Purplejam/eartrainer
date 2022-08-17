@@ -126,7 +126,7 @@ const answers: answersDataTypeRecords = {
 	},
 	19: {
 		'correct': 'Малая септима',
-		'audio': audio6,
+		'audio': audio20,
 		'question': 'Малая секста, малая септима или октава?'
 	},
 }

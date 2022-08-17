@@ -3,6 +3,7 @@ import {Action} from 'redux';
 import {AppStateType} from '../reducers/index';
 import melodicIntervals01 from '../data/melodicIntervals01';
 import melodicIntervals02 from '../data/melodicIntervals02';
+import rhythm01 from '../data/rhythm01';
 import {shuffleArray} from '../lib/shuffle';
 
 function getCurrentTestData(slug: any) {
@@ -11,6 +12,8 @@ function getCurrentTestData(slug: any) {
 			return melodicIntervals01;
 		case 'melodic-intervals-2' :
 			return melodicIntervals02;
+		case 'rhythm-1' :
+			return rhythm01;
 		default :
 			return melodicIntervals01;
 	}

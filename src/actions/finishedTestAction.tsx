@@ -4,6 +4,7 @@ import {AppStateType} from '../reducers/index';
 import {answerTypeRecords} from '../components/CurrentTest';
 import melodicIntervals01Answers from '../data/melodicIntervals01Answers';
 import melodicIntervals02Answers from '../data/melodicIntervals02Answers';
+import rhythm01Answers from '../data/rhythm01Answers';
 
 
 export interface answersDataTypeRecords {
@@ -28,6 +29,8 @@ function getCurrentTestAnswers(slug: string) {
 			return melodicIntervals01Answers;
 		case 'melodic-intervals-2' :
 			return melodicIntervals02Answers;
+		case 'rhythm-1' :
+			return rhythm01Answers;
 		default :
 			return melodicIntervals01Answers;
 	}
