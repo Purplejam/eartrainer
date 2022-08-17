@@ -3,6 +3,7 @@ import {Action} from 'redux';
 import {AppStateType} from '../reducers/index';
 import {answerTypeRecords} from '../components/CurrentTest';
 import melodicIntervals01Answers from '../data/melodicIntervals01Answers';
+import melodicIntervals02Answers from '../data/melodicIntervals02Answers';
 
 
 export interface answersDataTypeRecords {
@@ -25,6 +26,8 @@ function getCurrentTestAnswers(slug: string) {
 	switch (slug) {
 		case 'melodic-intervals-1' :
 			return melodicIntervals01Answers;
+		case 'melodic-intervals-2' :
+			return melodicIntervals02Answers;
 		default :
 			return melodicIntervals01Answers;
 	}
