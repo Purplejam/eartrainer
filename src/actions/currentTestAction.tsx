@@ -4,6 +4,7 @@ import {AppStateType} from '../reducers/index';
 import melodicIntervals01 from '../data/melodicIntervals01';
 import melodicIntervals02 from '../data/melodicIntervals02';
 import rhythm01 from '../data/rhythm01';
+import sync01 from '../data/sync01';
 import {shuffleArray} from '../lib/shuffle';
 
 function getCurrentTestData(slug: any) {
@@ -14,6 +15,8 @@ function getCurrentTestData(slug: any) {
 			return melodicIntervals02;
 		case 'rhythm-1' :
 			return rhythm01;
+		case 'sync-1' :
+			return sync01;
 		default :
 			return melodicIntervals01;
 	}

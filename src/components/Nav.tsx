@@ -1,8 +1,9 @@
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import styled from 'styled-components';
 import headphones from '../img/ear-listen-solid.svg';
 import { faEarListen} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useLocation } from "react-router-dom";
 
 const NavStyle = styled.nav`
 	padding: 0 5rem;
@@ -48,7 +49,7 @@ const NavStyle = styled.nav`
 	}
 
 	@media (max-width: 768px) {
-		padding: 0 3rem;
+		padding: 0 2rem;
 	}
 
 	@media (max-width: 415px) {
@@ -57,6 +58,14 @@ const NavStyle = styled.nav`
 		ul li {
 			font-size: .6rem;
 		}
+		
+		.random-test {
+			display: none;
+		}
+	}
+
+	@media (max-width: 330px) {
+		padding: 0 .5rem;
 	}
 `
 
@@ -71,15 +80,21 @@ const Logo = styled.h3`
 
 const logoEarIcon = <FontAwesomeIcon icon={faEarListen}/>
 
+
 //main component
 function Nav() {
+	 const { pathname } = useLocation();
+
   return (
     <NavStyle>
     	<Link to="/"><Logo>{logoEarIcon}Eartrainer</Logo></Link>
 	     <div>
 	     	<ul>
+	     	{pathname === '/' 
+		     	?	<li><a href="/#tests">Тесты</a></li>
+		     	: <li><Link to="/#tests">Тесты</Link></li>}     		
 	     		<li><Link to="/">Главная</Link></li>
-	     		<li><Link to="/current-test">Случайный тест</Link></li>
+	     		<li className="random-test"><Link to="/current-test">Случайный тест</Link></li>
 	     	</ul>    	  	
 	    	</div>
     </NavStyle>

@@ -5,13 +5,14 @@ import {answerTypeRecords} from '../components/CurrentTest';
 import melodicIntervals01Answers from '../data/melodicIntervals01Answers';
 import melodicIntervals02Answers from '../data/melodicIntervals02Answers';
 import rhythm01Answers from '../data/rhythm01Answers';
+import sync01Answers from '../data/sync01Answers';
 
 
 export interface answersDataTypeRecords {
-   [key: number]: {
-				correct: string,
-				audio: string,
-				question: string
+ [key: number]: {
+		correct: string,
+		audio: string,
+		question: string
 	}
 }
 
@@ -31,6 +32,8 @@ function getCurrentTestAnswers(slug: string) {
 			return melodicIntervals02Answers;
 		case 'rhythm-1' :
 			return rhythm01Answers;
+		case 'sync-1' :
+			return sync01Answers;
 		default :
 			return melodicIntervals01Answers;
 	}

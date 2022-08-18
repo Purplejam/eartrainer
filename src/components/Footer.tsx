@@ -70,11 +70,11 @@ function Footer() {
 	return(
 		<FooterStyle>
 			<div className="author-info">
-				<p>by Kuzmenko Alexander, 2022</p>
+				<p>@ Кузьменко Александр, 2022</p>
 			</div>
 
 			<div className="social">
-				<h4>Contact me:</h4>
+				<h4>Контакты:</h4>
 				<div className="social-icons">				
 					<a target="_blank" rel="noreferrer" href="https://www.instagram.com/alexanderkkqq">
 						{instIcon}

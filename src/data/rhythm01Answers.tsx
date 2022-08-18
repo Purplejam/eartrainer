@@ -21,10 +21,10 @@ import audio20 from './rhythm01-audio/20.mp3';
 
 
 export interface answersDataTypeRecords {
-   [key: number]: {
-				correct: string,
-				audio: string,
-				question: string
+ [key: number]: {
+		correct: string,
+		audio: string,
+		question: string
 	}
 }
 
