@@ -83,8 +83,8 @@ function MainTestButton({answer, isAnswered, newAnswerHandler}: CurrentTestButto
 			<ButtonStyles
 				data-tooltip="Укажите ответ"
 				onMouseUp={(e) => e.preventDefault()} 
-				onClick={(e: any) => answer !== '' 
-				? newAnswerHandler() : e.target.classList.toggle('tooltip-active')}
+				onClick={(e: React.MouseEvent<HTMLButtonElement>) => answer !== '' 
+				? newAnswerHandler() : (e.target as HTMLButtonElement).classList.toggle('tooltip-active')}
 				className={`main-button ${answer === '' ? "inactive" : ""}`}>{isAnswered 
 					? "Изменить ответ" 
 					: "Ответить"}
@@ -111,8 +111,8 @@ export function TestFinishButton({answer, finishTestHandler}: FinishTestButtonTy
 		data-tooltip="Укажите ответ"
 		onMouseUp={(e) => e.preventDefault()} 
 		className={`main-button ${answer === '' ? "inactive" : ""}`}
-		onClick={(e: any) => answer !== '' 
-		? finishTestHandler() : e.target.classList.toggle('tooltip-active')}>Завершить тест!</ButtonStyles>
+		onClick={(e: React.MouseEvent<HTMLButtonElement>) => answer !== '' 
+		? finishTestHandler() : (e.target as HTMLButtonElement).classList.toggle('tooltip-active')}>Завершить тест!</ButtonStyles>
 		)
 }
 

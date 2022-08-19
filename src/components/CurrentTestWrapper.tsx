@@ -1,18 +1,13 @@
 import CurrentTest from './CurrentTest';
 import {AppStateType} from '../reducers/index';
 import {Action} from 'redux';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {ThunkDispatch} from 'redux-thunk';
-import {testType} from '../data/melodicIntervals01';
 import LoadingGif from './LoadingGif';
 import {currentTestAction} from '../actions/currentTestAction';
 import { useParams } from 'react-router-dom';
 import {useEffect, useState} from 'react';
 
-type currentTestSate = {
-	isLoading: boolean,
-	tests: testType[],
-}
 
 function CurrentTestWrapper() {
 	const params = useParams();
@@ -23,9 +18,11 @@ function CurrentTestWrapper() {
 	
 	useEffect(() =>  {
 		window.scrollTo(0, 0);
-		dispatch(currentTestAction(slug));
-		setLoading(false);
-	}, [slug])
+		if (typeof slug !== 'undefined') {
+			dispatch(currentTestAction(slug));
+			setLoading(false);
+		}
+	}, [slug, dispatch])
 	
 	return(
 		<div className="container">

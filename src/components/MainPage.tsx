@@ -87,7 +87,7 @@ const FirstScreen = styled.div`
 `
 
 function MainPage() {
-const downIcon = <FontAwesomeIcon icon={faArrowDownLong} />
+	const downIcon = <FontAwesomeIcon icon={faArrowDownLong} />
 
 	return(
 	 	<FirstScreen>

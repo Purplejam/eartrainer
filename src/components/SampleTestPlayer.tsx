@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import {useState, useRef, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faAngleLeft, faAngleRight, faPause } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
 import {loadingDisc} from './TestPlayer';
 //@ts-ignore
 import nprogress from 'nprogress';
@@ -82,6 +82,7 @@ function SampleTestPlayer({audioRef, currentAudio, playingAudio, setPlayingAudio
 	if (playingAudio !== currentAudio) {
 			setPlaying(false);	
 		}
+// eslint-disable-next-line
 	}, [playingAudio])
 
 

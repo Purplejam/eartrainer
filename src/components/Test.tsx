@@ -2,11 +2,6 @@ import styled from 'styled-components';
 import fullStar from '../img/star-full.png';
 import emptyStar from '../img/star-empty.png';
 import {Link} from "react-router-dom";
-import {currentTestAction} from '../actions/currentTestAction';
-import {useDispatch} from 'react-redux';
-import {AppStateType} from '../reducers/index';
-import {ThunkDispatch} from 'redux-thunk';
-import {Action} from 'redux';
 import getColor from '../lib/getColor';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightLong } from '@fortawesome/free-solid-svg-icons';
@@ -103,12 +98,7 @@ function getStarRaiting(qty: number) {
 
 //main component
 function Test({name, slug, complexity, description, quantity, technique}: TestPropsTypes) {
-
 	const rightIcon = <FontAwesomeIcon icon={faArrowRightLong} />
-	const dispatch: ThunkDispatch<AppStateType, void, Action> = useDispatch();
-	function currentTestHandler(slug: string) {
-		dispatch(currentTestAction(slug));
-	}
 
  return (
  	<Link to={`/current-test/${slug}`}>

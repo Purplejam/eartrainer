@@ -1,9 +1,7 @@
-import {Link, NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 import styled from 'styled-components';
-import headphones from '../img/ear-listen-solid.svg';
 import { faEarListen} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useLocation } from "react-router-dom";
 import { HashLink } from 'react-router-hash-link';
 
 const NavStyle = styled.nav`
@@ -85,7 +83,6 @@ const logoEarIcon = <FontAwesomeIcon icon={faEarListen}/>
 
 //main component
 function Nav() {
- const { pathname } = useLocation();
 
  return (
   <NavStyle>

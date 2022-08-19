@@ -7,7 +7,7 @@ import rhythm01 from '../data/rhythm01';
 import sync01 from '../data/sync01';
 import {shuffleArray} from '../lib/shuffle';
 
-function getCurrentTestData(slug: any) {
+function getCurrentTestData(slug: string) {
 	switch (slug) {
 		case 'melodic-intervals-1' :
 			return melodicIntervals01;
@@ -23,7 +23,7 @@ function getCurrentTestData(slug: any) {
 }
 
 
-export const currentTestAction = (slug: any) => async (dispatch: ThunkDispatch<AppStateType, void, Action>) => {
+export const currentTestAction = (slug: string) => async (dispatch: ThunkDispatch<AppStateType, void, Action>) => {
 	dispatch({
 		type: 'IS_LOADING'
 	})

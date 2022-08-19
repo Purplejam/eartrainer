@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 import {useState, useRef, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faAngleLeft, faAngleRight, faPause, faCompactDisc } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faPause, faCompactDisc } from '@fortawesome/free-solid-svg-icons';
 //@ts-ignore
 import nprogress from 'nprogress';
 import 'nprogress/nprogress.css';
+
+type PlayerType = {
+	currentAudio: string
+}
 
 const PlayerStyle = styled.div`
 .player {
@@ -141,7 +145,7 @@ input[type="range"]::-ms-thumb {
 `
 export const loadingDisc = <FontAwesomeIcon size="2x" className="loading-icon" icon={faCompactDisc} />
 
-function Player({currentAudio}: any) {
+function Player({currentAudio}: PlayerType) {
 	const [isPlaying, setPlaying] = useState<boolean>(false);
 	const [audioLoading, setLoading] = useState<boolean>(true);
 	const [slowAnimation, setAnimation] = useState<boolean>(true);

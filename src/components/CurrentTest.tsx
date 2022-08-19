@@ -22,7 +22,7 @@ import 'nprogress/nprogress.css';
 type currentTestSate = {
 	isLoading: boolean,
 	tests: testType[],
-	slug: any
+	slug: string
 }
 
 export interface answerTypeRecords {
@@ -221,14 +221,8 @@ function CurrentTest() {
 	const dispatch: ThunkDispatch<AppStateType, void, Action> = useDispatch();
 
 	useEffect(() => {
-		if (slug === '') {
-			navigate('/');
-		}
-	}, [slug, navigate])
-
-	useEffect(() => {
-		setAnswered(() => answerList.hasOwnProperty(currentIndex));
-	}, [currentIndex])
+			setAnswered(() => answerList.hasOwnProperty(currentIndex));
+	}, [currentIndex, answerList])
 
 	useEffect(() => {
 		if (Object.keys(answerList).length === (tests.length)) {
@@ -237,7 +231,7 @@ function CurrentTest() {
 			nprogress.done();
 			navigate('/finished-test');
 		}
-	}, [answerList])
+	}, [answerList, navigate, slug, dispatch, tests.length])
 
 	//change test on click
 	function changeSingleTest(n: number) {
@@ -260,7 +254,7 @@ function CurrentTest() {
 	}
 
 	//set current answer
-	function checkBoxHandler(e: any) {
+	function checkBoxHandler(e: React.ChangeEvent<HTMLInputElement>) {
 		setAnswer(e.target.value);
 	}
 
@@ -341,8 +335,8 @@ function CurrentTest() {
     					)
     			})}
  					</div>
-    			{Object.keys(answerList).length === (tests.length - 1) && !isAnswered
-    				//renders when one last test left
+    			{Object.keys(answerList).length === (tests.length - 1) 
+    				//renders only when one last test left
     				? <TestFinishButton answer={answer} finishTestHandler={finishTestHandler}/>
     				//renders when 1+ test left 
     				: <>

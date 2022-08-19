@@ -2,7 +2,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useRef, useState} from 'react';
 import {AppStateType} from '../reducers/index';
 import {Action} from 'redux';
-import {currentTestAction} from '../actions/currentTestAction';
 import {ThunkDispatch} from 'redux-thunk';
 import styled from 'styled-components';
 import SampleTestPlayer from './SampleTestPlayer';
