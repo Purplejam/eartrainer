@@ -7,13 +7,14 @@ const FirstScreen = styled.div`
 	display: flex;
 	align-items: center;
 	text-align: center;
+	background-color: #FAFAFA;
 	.main-block {
 		width: 65%;
 		p {
 			&:after {
 				content: '';
 				display: block;
-				width: 10%;
+				width: 4rem;
 				height: 2px;
 				background-color: #EF4F4F;
 				margin: 0 auto;
@@ -59,7 +60,7 @@ const FirstScreen = styled.div`
 			}
 			p {
 				&:after {
-					width: 25%;
+					width: 4rem;
 				}
 			}
 			button.main-button {

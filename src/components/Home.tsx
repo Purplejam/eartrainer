@@ -9,6 +9,7 @@ import {Action} from 'redux';
 import {useSelector} from 'react-redux';
 import LoadingGif from './LoadingGif';
 import MainPage from './MainPage'; 
+import AboutProject from './AboutProject';
 
 const HomeStyle = styled.div`
 	&.container {
@@ -81,8 +82,9 @@ function Home() {
 	 					quantity={test.quantity}
 	 					/>
 	 				})}
-	 			</TestList>}   
+	 			</TestList>}
 	  </HomeStyle>
+	  <AboutProject/> 
 	  </>
   );
 }

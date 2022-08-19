@@ -4,7 +4,7 @@ import { faInstagram, faTelegram, faGithub } from '@fortawesome/free-brands-svg-
 import {  } from '@fortawesome/free-solid-svg-icons';
 
 const FooterStyle = styled.footer`
- padding: 1.5rem;
+ padding: 1rem;
 	display: flex;
 	align-items: center;
 	color: #fff;
@@ -21,7 +21,7 @@ const FooterStyle = styled.footer`
 	.social {
 		width: 30%;
 		h4 {
-			padding-bottom: .5rem;
+			padding-bottom: 0rem;
 		}
 		.social-icons {
 			padding-top: .5rem;
@@ -54,11 +54,18 @@ const FooterStyle = styled.footer`
  			justify-content: center;
  			padding-top: 0;
  			padding-bottom: 1rem;
+ 			grid-template-columns: 10% 10% 10%;
  		}
  	}
  }
  @media (max-width: 415px) {
  	padding: .5rem;
+
+ 	.social {
+ 		.social-icons {
+ 			padding-top: .5rem;
+ 		}
+ 	}
  }
 `
 

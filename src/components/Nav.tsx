@@ -59,7 +59,7 @@ const NavStyle = styled.nav`
 			font-size: .6rem;
 		}
 		
-		.random-test {
+		.about-link {
 			display: none;
 		}
 	}
@@ -83,22 +83,25 @@ const logoEarIcon = <FontAwesomeIcon icon={faEarListen}/>
 
 //main component
 function Nav() {
-	 const { pathname } = useLocation();
+ const { pathname } = useLocation();
 
-  return (
-    <NavStyle>
-    	<Link to="/"><Logo>{logoEarIcon}Eartrainer</Logo></Link>
-	     <div>
-	     	<ul>
-	     	{pathname === '/' 
-		     	?	<li><a href="/#tests">Тесты</a></li>
-		     	: <li><Link to="/#tests">Тесты</Link></li>}     		
-	     		<li><Link to="/">Главная</Link></li>
-	     		<li className="random-test"><Link to="/current-test">Случайный тест</Link></li>
-	     	</ul>    	  	
-	    	</div>
-    </NavStyle>
-  );
+ return (
+   <NavStyle>
+   	<Link to="/"><Logo>{logoEarIcon}Eartrainer</Logo></Link>
+     <div>
+     	<ul>
+     	{pathname === '/' 
+	     	?	<li><a href="/#tests">Тесты</a></li>
+	     	: <li><Link to="/#tests">Тесты</Link></li>}     		
+     		<li><Link to="/">Главная</Link></li>
+     		
+     	{pathname === '/' 
+	     	?	<li className="about-link"><a href="/#about">О проекте</a></li>
+	     	: <li className="about-link"><Link to="/#about">О проекте</Link></li>} 
+     	</ul>    	  	
+    	</div>
+   </NavStyle>
+ );
 }
 
 export default Nav;
