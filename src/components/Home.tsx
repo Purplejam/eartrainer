@@ -32,7 +32,19 @@ const HomeStyle = styled.div`
 
 	@media (max-width: 415px) {
 		&.container {
-			padding-top: 1rem;
+			padding-top: 2rem;
+		}
+
+		h2 {
+			text-align: left;
+   font-size: 1rem;
+			&:after {
+				margin-top: .5rem;
+				content: '';
+				display: block;
+				width: 4rem;
+				height: 2px;
+				background-color: #EF4F4F;
 		}	
 	}
 `

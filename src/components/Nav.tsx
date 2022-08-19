@@ -4,6 +4,7 @@ import headphones from '../img/ear-listen-solid.svg';
 import { faEarListen} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useLocation } from "react-router-dom";
+import { HashLink } from 'react-router-hash-link';
 
 const NavStyle = styled.nav`
 	padding: 0 5rem;
@@ -13,6 +14,7 @@ const NavStyle = styled.nav`
 	align-items: center;
 	box-shadow: 0 1px 2px 0 rgba(32,33,36,0.28);
 	background-color: #333;
+	
 	ul {
 		li {
 			display: inline-block;
@@ -86,21 +88,16 @@ function Nav() {
  const { pathname } = useLocation();
 
  return (
-   <NavStyle>
-   	<Link to="/"><Logo>{logoEarIcon}Eartrainer</Logo></Link>
-     <div>
-     	<ul>
-     	{pathname === '/' 
-	     	?	<li><a href="/#tests">Тесты</a></li>
-	     	: <li><Link to="/#tests">Тесты</Link></li>}     		
-     		<li><Link to="/">Главная</Link></li>
-     		
-     	{pathname === '/' 
-	     	?	<li className="about-link"><a href="/#about">О проекте</a></li>
-	     	: <li className="about-link"><Link to="/#about">О проекте</Link></li>} 
-     	</ul>    	  	
-    	</div>
-   </NavStyle>
+  <NavStyle>
+  	<Link to="/"><Logo>{logoEarIcon}Eartrainer</Logo></Link>
+    <div>
+    	<ul>
+     	<li><HashLink to="/#tests">Тесты</HashLink></li>     		
+    		<li><Link to="/">Главная</Link></li>
+     	<li className="about-link"><HashLink to="/#about">О проекте</HashLink></li>
+    	</ul>    	  	
+   	</div>
+  </NavStyle>
  );
 }
 

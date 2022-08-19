@@ -23,7 +23,7 @@ const allTestsInfo: testInfoType[] = [
 	'name': 'Интервалы, уровень 2',
 	'slug': 'melodic-intervals-2',
 	'technique': 'Гармонический слух',
-	'complexity': 4,
+	'complexity': 6,
 	'description': 'Простые гармонические интервалы от сексты до октавы. Учимся распознавать созвучия на слух. Начинайте подбирать с Вашим инструментом, а затем без него.'},
 {
 	'id': 3,
@@ -31,7 +31,7 @@ const allTestsInfo: testInfoType[] = [
 	'name': 'Тайминг, уровень 1 (30-40ms)',
 	'slug': 'rhythm-1',
 	'technique': 'Ритмика',
-	'complexity': 6,
+	'complexity': 7,
 	'description': 'Учимся различать спешку и отставание при работе с ритм-секцией. Важнейший навык для игры на любом инструменте.'},
 {
 	'id': 4,

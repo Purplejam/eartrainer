@@ -59,7 +59,7 @@ const FooterStyle = styled.footer`
  	}
  }
  @media (max-width: 415px) {
- 	padding: .5rem;
+ 	padding: 1.5rem .5rem .5rem .5rem;
 
  	.social {
  		.social-icons {
