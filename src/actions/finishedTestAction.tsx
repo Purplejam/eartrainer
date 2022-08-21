@@ -6,6 +6,7 @@ import melodicIntervals01Answers from '../data/melodicIntervals01Answers';
 import melodicIntervals02Answers from '../data/melodicIntervals02Answers';
 import rhythm01Answers from '../data/rhythm01Answers';
 import sync01Answers from '../data/sync01Answers';
+import rhythm0Answers from '../data/rhythmBeginnerAnswers';
 
 
 export interface answersDataTypeRecords {
@@ -34,6 +35,8 @@ function getCurrentTestAnswers(slug: string) {
 			return rhythm01Answers;
 		case 'sync-1' :
 			return sync01Answers;
+		case 'rhythm-0' :
+			return rhythm0Answers;
 		default :
 			return melodicIntervals01Answers;
 	}

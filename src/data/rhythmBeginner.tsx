@@ -1,23 +1,23 @@
-import audio1 from './rhythm01-audio/01.mp3';
-import audio2 from './rhythm01-audio/02.mp3';
-import audio3 from './rhythm01-audio/03.mp3';
-import audio4 from './rhythm01-audio/04.mp3';
-import audio5 from './rhythm01-audio/05.mp3';
-import audio6 from './rhythm01-audio/06.mp3';
-import audio7 from './rhythm01-audio/07.mp3';
-import audio8 from './rhythm01-audio/08.mp3';
-import audio9 from './rhythm01-audio/09.mp3';
-import audio10 from './rhythm01-audio/10.mp3';
-import audio11 from './rhythm01-audio/11.mp3';
-import audio12 from './rhythm01-audio/12.mp3';
-import audio13 from './rhythm01-audio/13.mp3';
-import audio14 from './rhythm01-audio/14.mp3';
-import audio15 from './rhythm01-audio/15.mp3';
-import audio16 from './rhythm01-audio/16.mp3';
-import audio17 from './rhythm01-audio/17.mp3';
-import audio18 from './rhythm01-audio/18.mp3';
-import audio19 from './rhythm01-audio/19.mp3';
-import audio20 from './rhythm01-audio/20.mp3';
+import audio1 from './rhythmBeginner/01.mp3';
+import audio2 from './rhythmBeginner/02.mp3';
+import audio3 from './rhythmBeginner/03.mp3';
+import audio4 from './rhythmBeginner/04.mp3';
+import audio5 from './rhythmBeginner/05.mp3';
+import audio6 from './rhythmBeginner/06.mp3';
+import audio7 from './rhythmBeginner/07.mp3';
+import audio8 from './rhythmBeginner/08.mp3';
+import audio9 from './rhythmBeginner/09.mp3';
+import audio10 from './rhythmBeginner/10.mp3';
+import audio11 from './rhythmBeginner/11.mp3';
+import audio12 from './rhythmBeginner/12.mp3';
+import audio13 from './rhythmBeginner/13.mp3';
+import audio14 from './rhythmBeginner/14.mp3';
+import audio15 from './rhythmBeginner/15.mp3';
+import audio16 from './rhythmBeginner/16.mp3';
+import audio17 from './rhythmBeginner/17.mp3';
+import audio18 from './rhythmBeginner/18.mp3';
+import audio19 from './rhythmBeginner/19.mp3';
+import audio20 from './rhythmBeginner/20.mp3';
 
 export type testType = {
 	id: number,
@@ -36,7 +36,7 @@ export type tasksType = {
 
 
 const tasks: tasksType = {
-	'slug': 'rhythm-1',
+	'slug': 'rhythm-0',
 	'tests': [
 	{
 		'id': 0,
