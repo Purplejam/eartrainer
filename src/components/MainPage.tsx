@@ -97,7 +97,7 @@ function MainPage() {
 
 	 	<div className="main-block">
 	 		<p>Eartrainer</p>
-	 		<h3>Тренировка слуха для музыкантов</h3>
+	 		<h3>Слуховой тренажёр для гитаристов</h3>
 	 		<a href="/#tests"><button className="main-button">К тестам {downIcon}</button></a>
 	 	</div>
 	 	</FirstScreen>	
