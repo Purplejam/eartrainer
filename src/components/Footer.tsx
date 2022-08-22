@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faTelegram, faGithub } from '@fortawesome/free-brands-svg-icons';
-import {  } from '@fortawesome/free-solid-svg-icons';
+import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 
 const FooterStyle = styled.footer`
  padding: 1rem;
@@ -72,7 +72,7 @@ const FooterStyle = styled.footer`
 function Footer() {
 	const instIcon = <FontAwesomeIcon icon={faInstagram}/>
 	const tgIcon = <FontAwesomeIcon icon={faTelegram}/>
-	const gitIcon = <FontAwesomeIcon icon={faGithub}/>
+	const webIcon = <FontAwesomeIcon icon={faGlobe}/>
 
 	return(
 		<FooterStyle>
@@ -89,8 +89,8 @@ function Footer() {
 					<a target="_blank" rel="noreferrer" href="https://t.me/purplejamguitar">
 						{tgIcon}
 					</a>
-					<a target="_blank" rel="noreferrer" href="https://github.com/Purplejam">
-						{gitIcon}
+					<a target="_blank" rel="noreferrer" href="https://purplejam.com.ua/">
+						{webIcon}
 					</a>
 				</div>
 			</div>
