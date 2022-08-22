@@ -86,7 +86,7 @@ function Footer() {
 					<a target="_blank" rel="noreferrer" href="https://www.instagram.com/alexanderkkqq">
 						{instIcon}
 					</a>
-					<a target="_blank" rel="noreferrer" href="https://t.me/purplejamguitar">
+					<a target="_blank" rel="noreferrer" href="https://t.me/alexkuzmenko09">
 						{tgIcon}
 					</a>
 					<a target="_blank" rel="noreferrer" href="https://purplejam.com.ua/">
