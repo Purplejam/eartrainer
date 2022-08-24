@@ -86,6 +86,7 @@ const FirstScreen = styled.div`
 	}
 `
 
+//main component
 function MainPage() {
 	const downIcon = <FontAwesomeIcon icon={faArrowDownLong} />
 

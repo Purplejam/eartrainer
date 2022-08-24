@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import loading from '../img/Ellipsis-2.9s-128px.gif';
 
 const LoadingDiv = styled.div`
 text-align: center;
@@ -60,6 +59,7 @@ text-align: center;
 }
 `
 
+//main component
 function LoadingGif() {
 	return(
 		<LoadingDiv>

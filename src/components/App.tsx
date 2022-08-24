@@ -12,7 +12,6 @@ import ScrollToTop from './ScrollToTop';
 const AppContainer = styled.div`
 `
 
-
 function App() {
   return (
   	<Router>

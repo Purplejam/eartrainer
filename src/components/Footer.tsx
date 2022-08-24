@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faTelegram, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram, faTelegram } from '@fortawesome/free-brands-svg-icons';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 
 const FooterStyle = styled.footer`
@@ -69,6 +69,7 @@ const FooterStyle = styled.footer`
  }
 `
 
+//main component
 function Footer() {
 	const instIcon = <FontAwesomeIcon icon={faInstagram}/>
 	const tgIcon = <FontAwesomeIcon icon={faTelegram}/>

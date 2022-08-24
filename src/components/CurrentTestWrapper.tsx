@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom';
 import {useEffect, useState} from 'react';
 
 
+//main component
 function CurrentTestWrapper() {
 	const params = useParams();
 	const slug = params.slug;

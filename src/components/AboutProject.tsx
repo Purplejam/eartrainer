@@ -66,6 +66,7 @@ const AboutStyles = styled.div`
 
 `
 
+//main component
 function AboutProject() {
 
 	return(

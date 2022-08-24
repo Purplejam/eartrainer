@@ -70,6 +70,7 @@ const PlayerStyle = styled.div`
 } 
 `
 
+//main component
 function SampleTestPlayer({audioRef, currentAudio, playingAudio, setPlayingAudio}: any) {
 	const [isPlaying, setPlaying] = useState<boolean>(false);
 	const [audioLoading, setLoading] = useState<boolean>(false);

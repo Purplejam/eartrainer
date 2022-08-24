@@ -145,6 +145,7 @@ input[type="range"]::-ms-thumb {
 `
 export const loadingDisc = <FontAwesomeIcon size="2x" className="loading-icon" icon={faCompactDisc} />
 
+//main component
 function Player({currentAudio}: PlayerType) {
 	const [isPlaying, setPlaying] = useState<boolean>(false);
 	const [audioLoading, setLoading] = useState<boolean>(true);
